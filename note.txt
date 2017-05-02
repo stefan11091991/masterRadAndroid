@@ -1,0 +1,11 @@
+naslovna strana - done
+uvod - opste stvari kao u prijavi, zatim zasto je bitna arhitektura, 
+sta je bolje u odnosu na MVC, sta cu sve da predstavim, kako ce da izgleda aplikacija
+MVP
+MVVM
+Poredjenje MVP i MVVM
+RXJava
+Dagger2 i RoboJuice, razlike
+
+ButterKnife, Stetho, Fabric
+
