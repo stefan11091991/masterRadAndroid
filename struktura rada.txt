@@ -1,15 +1,24 @@
-naslovna strana - done
-uvod - opste stvari kao u prijavi, zatim zasto je bitna arhitektura, 
+1.naslovna strana - done (1 strana)
+2. sadrzaj (2 strane)
+3. uvod - opste stvari kao u prijavi, zatim zasto je bitna arhitektura, 
 sta je bolje u odnosu na MVC i ono sto se pre koristilo, sta cu sve da predstavim, 
-kako ce da izgleda aplikacija
-MVP (Opsta prica, implementacija)
-MVVM
-Poredjenje MVP i MVVM
-RXJava
-Dagger2 i RoboJuice, razlike
-Java 8 i android
-ButterKnife, Stetho, Fabric
+kako ce da izgleda aplikacija (1 strana)
+4. MVP (Opsta prica, implementacija) (5 strana)
+5. MVVM (5 strana)
+6. Poredjenje MVP i MVVM (2 strane)
+7. RXJava (5 strana)
+8. RoboGuice (1-2 strane)
+9. Dagger2 (4 strane)
+10. razlike - (1 strana)  
+11. Java 8 i android (1 strana)
+12. ButterKnife, Stetho, Fabric (3 strane)
+13. Zakljucak (1 strana)
+14. Literatura (1 strana)
 -----------------------------------------------------------------------------------------------------
 uvod - mlada oblast koja tek sazreva i gde se u hodu odredjuju najbolje prakse, ime aplikacije je Movie Master
+
+jos ostalo za uvod da eventualno pomenes ReactiveX i ostale alate
+i napises da ces da predstavis sve to i uporedis u aplikaciji Movie Master stvorenoj za potrebe prezentovanja toga
+ i opises u kratkim crtama aplikaciju
 
 
