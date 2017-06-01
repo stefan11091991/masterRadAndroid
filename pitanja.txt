@@ -1,0 +1,6 @@
+Kakva treba da bude struktura, u smislu teorijski vs prakticno u aplikaciji, 
+da li treba da bude 
+sve teorijski pa sve prakticno
+ili po oblast teorijski pa ista oblast prakticno
+ili da se aplikacija stalno provlaci kroz teoriju?
+

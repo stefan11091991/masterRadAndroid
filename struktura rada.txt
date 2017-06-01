@@ -9,16 +9,29 @@ kako ce da izgleda aplikacija (1 strana)
 7. RXJava (5 strana)
 8. RoboGuice (1-2 strane)
 9. Dagger2 (4 strane)
-10. razlike - (1 strana)  
+10. poredjenje roboguice-a i daggera2 - (1 strana)  
 11. Java 8 i android (1 strana)
 12. ButterKnife, Stetho, Fabric (3 strane)
 13. Zakljucak (1 strana)
 14. Literatura (1 strana)
 -----------------------------------------------------------------------------------------------------
+
 uvod - mlada oblast koja tek sazreva i gde se u hodu odredjuju najbolje prakse, ime aplikacije je Movie Master
 
 jos ostalo za uvod da eventualno pomenes ReactiveX i ostale alate
 i napises da ces da predstavis sve to i uporedis u aplikaciji Movie Master stvorenoj za potrebe prezentovanja toga
  i opises u kratkim crtama aplikaciju
-
-
+ 
+ 
+MVP 
+Definicija
+istorija, motivacija za uvodjenje MVP-ja uopste
+Konkretno za android istorija i motivacija
+osnovna prica, tipa sta koji sloj sadrzi, slika jedna 
+dobre prakse i problemi koji se nailaze na androidu, lifecycle i cuvanje stanja, odnosno kesiranje
+view - glupi view i lifecycle
+presenter - biznis logika, nema lifecycle-alate nema kesiranja nikakvog
+model - pristup bazi, mrezi i ostalo, kesiranje podataka
+koristi onaj clanak sto si nasao za reference, kao i sample project
+Pisanje testova
+zakljucak: modularnost, testabilnost, lako odrzavanje
