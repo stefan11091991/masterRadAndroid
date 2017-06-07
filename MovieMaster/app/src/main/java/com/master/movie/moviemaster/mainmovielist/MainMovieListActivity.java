@@ -11,10 +11,10 @@ import com.master.movie.moviemaster.internal.MovieMaster;
 import javax.inject.Inject;
 
 /**
- * Created by stefa on 6/4/2017.
+ * Created by stefan on 6/4/2017.
  */
 
-public class MainMovieListActivity extends Activity {
+public class MainMovieListActivity extends Activity implements MainMovieListContract.View {
     @Inject
     MainMovieListPresenter presenter;
 
@@ -25,5 +25,10 @@ public class MainMovieListActivity extends Activity {
         Log.d("MyDebug", "Mydebug");
         setContentView(R.layout.activity_main_movie_list);
         presenter.dummyMethod();
+    }
+
+    @Override
+    public void showMovies() {
+
     }
 }
