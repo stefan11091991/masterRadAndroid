@@ -3,12 +3,20 @@ package com.master.movie.moviemaster.mainmovielist;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.master.movie.moviemaster.R;
+import com.master.movie.moviemaster.dto.Movie;
 import com.master.movie.moviemaster.internal.MovieMaster;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by stefan on 6/4/2017.
@@ -17,18 +25,43 @@ import javax.inject.Inject;
 public class MainMovieListActivity extends Activity implements MainMovieListContract.View {
     @Inject
     MainMovieListPresenter presenter;
+    MainMovieListAdapter adapter;
+
+    @BindView(R.id.movie_list)
+    RecyclerView movieList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((MovieMaster) getApplication()).getMovieComponent().inject(this);
-        Log.d("MyDebug", "Mydebug");
         setContentView(R.layout.activity_main_movie_list);
-        presenter.dummyMethod();
+        ButterKnife.bind(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        movieList.setLayoutManager(layoutManager);
+
     }
 
     @Override
-    public void showMovies() {
+    protected void onResume() {
+        super.onResume();
+        presenter.setView(this);
+        presenter.loadMovies();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        presenter.resetView();
+    }
+
+    @Override
+    public void showMovies(ArrayList<Movie> movies) {
+        if (adapter == null) {
+            adapter = new MainMovieListAdapter(movies);
+            movieList.setAdapter(adapter);
+        } else {
+            adapter.notifyDataSetChanged();
+        }
 
     }
 }

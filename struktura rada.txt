@@ -14,6 +14,9 @@ kako ce da izgleda aplikacija (1 strana)
 12. ButterKnife, Stetho, Fabric (3 strane)
 13. Zakljucak (1 strana)
 14. Literatura (1 strana)
+
+ ako zafali materijala dodaj malo kotlin
+
 -----------------------------------------------------------------------------------------------------
 
 uvod - mlada oblast koja tek sazreva i gde se u hodu odredjuju najbolje prakse, ime aplikacije je Movie Master
@@ -21,6 +24,7 @@ uvod - mlada oblast koja tek sazreva i gde se u hodu odredjuju najbolje prakse, 
 jos ostalo za uvod da eventualno pomenes ReactiveX i ostale alate
 i napises da ces da predstavis sve to i uporedis u aplikaciji Movie Master stvorenoj za potrebe prezentovanja toga
  i opises u kratkim crtama aplikaciju
+ 
  
  
 MVP 

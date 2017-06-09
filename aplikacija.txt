@@ -20,3 +20,7 @@ za MVP pravim samo prvu listu, kasnije tu ili negde drugde gledam kako da ukompo
 
 u krajnjem slucaju za ovo ostalo imacu tipa novi activity koji je fazon glumci
 i onda cu tu da dam neku ludu listu kojoj treba mnogo transformacija da postignem ono sto hocu
+
+---------------------------------------------------------------------------------------
+sada - osnovna verzija listanja 
+sutra i prekosutra - zavrsavanje i upeglavanje MVP-ija tako da u nedelju uvece posaljem mejl filipovicu, eventualno nekad sledece nedelje

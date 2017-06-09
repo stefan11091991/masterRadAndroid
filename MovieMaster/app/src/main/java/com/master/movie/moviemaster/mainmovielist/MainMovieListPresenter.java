@@ -13,18 +13,24 @@ import java.util.ArrayList;
 
 public class MainMovieListPresenter implements MainMovieListContract.Presenter {
     private MainMovieListModel mainMovieListModel;
+    private MainMovieListContract.View view;
 
     public MainMovieListPresenter(MainMovieListModel mainMovieListModel) {
         this.mainMovieListModel = mainMovieListModel;
     }
 
-    public void dummyMethod() {
-        Log.d("MyDebug", "dummy method in presenter");
-        mainMovieListModel.dummyMethod();
+    public void setView(MainMovieListContract.View view) {
+        this.view = view;
     }
 
     @Override
-    public ArrayList<Movie> loadMovies() {
-        return mainMovieListModel.getMovies();
+    public void loadMovies() {
+        ArrayList<Movie> movies = mainMovieListModel.getMovies();
+        view.showMovies(movies);
+    }
+
+    @Override
+    public void resetView() {
+        view = null;
     }
 }

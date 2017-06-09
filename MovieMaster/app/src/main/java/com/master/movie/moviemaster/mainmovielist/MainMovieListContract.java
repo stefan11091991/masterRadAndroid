@@ -9,11 +9,12 @@ import java.util.ArrayList;
  */
 
 public interface MainMovieListContract {
-    public interface Presenter{
-        ArrayList<Movie> loadMovies();
+    interface Presenter {
+        void loadMovies();
+        void resetView();
     }
 
-    public interface View {
-        void showMovies();
+    interface View {
+        void showMovies(ArrayList<Movie> movies);
     }
 }
