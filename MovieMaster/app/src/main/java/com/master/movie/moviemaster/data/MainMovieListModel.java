@@ -3,6 +3,8 @@ package com.master.movie.moviemaster.data;
 import android.util.Log;
 
 import com.master.movie.moviemaster.dto.Movie;
+import com.master.movie.moviemaster.internal.ApiService;
+import com.master.movie.moviemaster.internal.ApiServiceWrapper;
 
 import java.util.ArrayList;
 
@@ -12,12 +14,15 @@ import java.util.ArrayList;
 
 public class MainMovieListModel {
     private ArrayList<Movie> movies;
+    ApiServiceWrapper apiServiceWrapper;
 
-    public MainMovieListModel() {
+    public MainMovieListModel(ApiServiceWrapper apiServiceWrapper) {
+        this.apiServiceWrapper = apiServiceWrapper;
         initializeMovies();
     }
 
     private void initializeMovies() {
+        apiServiceWrapper.dummyMethod();
         movies = new ArrayList<>();
         movies.add(new Movie(1, "The Shawshank Redemption", 1994, 9.2f));
         movies.add(new Movie(2, "The Godfather", 1972, 9.2f));
@@ -32,7 +37,4 @@ public class MainMovieListModel {
         return movies;
     }
 
-    public void dummyMethod() {
-        Log.d("MyDebug", "dummy method in mainMovielistModel");
-    }
 }

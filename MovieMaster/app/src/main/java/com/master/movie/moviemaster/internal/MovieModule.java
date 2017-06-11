@@ -17,8 +17,8 @@ public class MovieModule {
 
     @Provides
     @Singleton
-    MainMovieListModel provideMainMovieListModel() {
-        return new MainMovieListModel();
+    MainMovieListModel provideMainMovieListModel(ApiServiceWrapper apiServiceWrapper) {
+        return new MainMovieListModel(apiServiceWrapper);
     }
 
     @Provides
