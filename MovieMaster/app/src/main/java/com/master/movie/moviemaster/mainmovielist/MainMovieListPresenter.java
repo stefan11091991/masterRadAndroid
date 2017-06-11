@@ -6,6 +6,10 @@ import com.master.movie.moviemaster.data.MainMovieListModel;
 import com.master.movie.moviemaster.dto.Movie;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import rx.Subscriber;
+import rx.Subscription;
 
 /**
  * Created by stefan on 6/4/2017.
@@ -14,6 +18,7 @@ import java.util.ArrayList;
 public class MainMovieListPresenter implements MainMovieListContract.Presenter {
     private MainMovieListModel mainMovieListModel;
     private MainMovieListContract.View view;
+    Subscription movieSubscription;
 
     public MainMovieListPresenter(MainMovieListModel mainMovieListModel) {
         this.mainMovieListModel = mainMovieListModel;
@@ -25,8 +30,23 @@ public class MainMovieListPresenter implements MainMovieListContract.Presenter {
 
     @Override
     public void loadMovies() {
-        ArrayList<Movie> movies = mainMovieListModel.getMovies();
-        view.showMovies(movies);
+        movieSubscription = mainMovieListModel.loadMovies()
+                .subscribe(new Subscriber<List<Movie>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.i("INFO", "Completed");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onNext(List<Movie> movies) {
+                        view.showMovies((ArrayList<Movie>) movies);
+                    }
+                });
     }
 
     @Override

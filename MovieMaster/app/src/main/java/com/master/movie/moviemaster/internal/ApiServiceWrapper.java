@@ -2,8 +2,15 @@ package com.master.movie.moviemaster.internal;
 
 import android.util.Log;
 
-import java.io.Console;
-import java.util.ConcurrentModificationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.master.movie.moviemaster.dto.Movie;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Created by stefan.bacevic on 6/11/2017.
@@ -16,7 +23,24 @@ public class ApiServiceWrapper {
         this.apiService = apiService;
     }
 
-    public void dummyMethod(){
-        Log.d("MyDebug", "MyDebug apiServiceWrapper");
+    public ArrayList<Movie> getAllMovies() {
+        Log.d("MyDebug", "getting all the movies");
+        ArrayList<Movie> movies = new ArrayList<>();
+        try {
+            Call<Movie[]> smth = apiService.getAllMovies("/all");
+            Response<Movie[]> movieResponse = apiService.getAllMovies("/all").execute();
+            if (movieResponse.isSuccessful()) {
+                movies.addAll(new ArrayList<>(Arrays.asList(movieResponse.body())));
+            } else {
+                Log.e("ERROR", "bad response body");
+            }
+        } catch (IOException e) {
+            if (e instanceof JsonMappingException) {
+                Log.e("ERROR", "JSON Mapping Problem");
+            } else {
+                Log.e("ERROR", e.getLocalizedMessage());
+            }
+        }
+        return movies;
     }
 }

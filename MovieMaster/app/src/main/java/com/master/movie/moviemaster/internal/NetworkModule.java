@@ -27,7 +27,7 @@ public class NetworkModule {
                 .build();
 
         return new Retrofit.Builder()
-                .baseUrl("http://127.0.0.1:8081")
+                .baseUrl("http://192.168.0.13:8081")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .client(okHttpClient)
                 .build();
