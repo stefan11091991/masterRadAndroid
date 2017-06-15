@@ -25,8 +25,13 @@ public class MainMovieListModel {
 
     public Observable<List<Movie>> loadMovies() {
         return Observable.create((Observable.OnSubscribe<List<Movie>>) this::getMovies)
+                .doOnNext(this::getPosters)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io());
+    }
+
+    private void getPosters(List<Movie> movies) {
+
     }
 
     private void getMovies(Subscriber<? super List<Movie>> subscriber) {

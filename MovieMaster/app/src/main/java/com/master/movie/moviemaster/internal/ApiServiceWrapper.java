@@ -24,10 +24,8 @@ public class ApiServiceWrapper {
     }
 
     public ArrayList<Movie> getAllMovies() {
-        Log.d("MyDebug", "getting all the movies");
         ArrayList<Movie> movies = new ArrayList<>();
         try {
-            Call<Movie[]> smth = apiService.getAllMovies("/all");
             Response<Movie[]> movieResponse = apiService.getAllMovies("/all").execute();
             if (movieResponse.isSuccessful()) {
                 movies.addAll(new ArrayList<>(Arrays.asList(movieResponse.body())));
@@ -35,12 +33,16 @@ public class ApiServiceWrapper {
                 Log.e("ERROR", "bad response body");
             }
         } catch (IOException e) {
-            if (e instanceof JsonMappingException) {
-                Log.e("ERROR", "JSON Mapping Problem");
-            } else {
-                Log.e("ERROR", e.getLocalizedMessage());
-            }
+            handleError(e);
         }
         return movies;
+    }
+
+    private void handleError(IOException e){
+        if (e instanceof JsonMappingException) {
+            Log.e("ERROR", "JSON Mapping Problem");
+        } else {
+            Log.e("ERROR", e.getLocalizedMessage());
+        }
     }
 }

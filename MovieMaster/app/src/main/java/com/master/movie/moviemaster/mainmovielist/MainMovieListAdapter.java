@@ -1,6 +1,7 @@
 package com.master.movie.moviemaster.mainmovielist;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ public class MainMovieListAdapter extends RecyclerView.Adapter<MovieHolder> {
     public void onBindViewHolder(MovieHolder holder, int position) {
         Movie movie = movies.get(position);
         holder.movieName.setText(movie.getName());
+        Log.d("MyDebug", "" + movie.getPoster());
     }
 
     @Override
