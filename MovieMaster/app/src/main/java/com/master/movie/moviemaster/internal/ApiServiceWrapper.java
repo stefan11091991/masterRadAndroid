@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import retrofit2.Call;
 import retrofit2.Response;
 
 /**

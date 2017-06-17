@@ -33,6 +33,13 @@ public class MainMovieListAdapter extends RecyclerView.Adapter<MovieHolder> {
     public void onBindViewHolder(MovieHolder holder, int position) {
         Movie movie = movies.get(position);
         holder.movieName.setText(movie.getName());
+        holder.rating.setText(String.valueOf(movie.getRating()));
+        holder.year.setText(String.valueOf(movie.getYear()));
+        if(movie.getPosterBitmap() == null){
+
+        }
+        holder.poster.setImageBitmap(movie.getPosterBitmap());
+
         Log.d("MyDebug", "" + movie.getPoster());
     }
 

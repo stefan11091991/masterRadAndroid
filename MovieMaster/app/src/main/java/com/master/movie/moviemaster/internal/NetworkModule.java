@@ -1,5 +1,7 @@
 package com.master.movie.moviemaster.internal;
 
+import com.master.movie.moviemaster.util.Constants;
+
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
@@ -27,7 +29,7 @@ public class NetworkModule {
                 .build();
 
         return new Retrofit.Builder()
-                .baseUrl("http://192.168.0.13:8081")
+                .baseUrl(Constants.rootUrl)
                 .addConverterFactory(JacksonConverterFactory.create())
                 .client(okHttpClient)
                 .build();

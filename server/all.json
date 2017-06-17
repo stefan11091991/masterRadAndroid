@@ -4,48 +4,48 @@
     "name": "The Shawshank Redemption",
     "year": 1994,
     "rating": 9.2,
-	"poster":"/posters/1"
+	"poster":"/posters/1.jpg"
   },
   {
     "id": "2",
     "name": "The Godfather",
     "year": 1972,
     "rating": 9.2,
-	"poster":"/posters/2"
+	"poster":"/posters/2.jpg"
   },
   {
     "id": "3",
     "name": "The Godfather: Part II",
     "year": 1974,
     "rating": 9.0,
-	"poster":"/posters/3"
+	"poster":"/posters/3.jpg"
   },
   {
     "id": "4",
     "name": "The Dark Knight",
     "year": 2008,
     "rating": 8.9,
-	"poster":"/posters/4"
+	"poster":"/posters/4.jpg"
   },
   {
     "id": "5",
     "name": "12 Angry Men",
     "year": 1957,
     "rating": 8.9,
-	"poster":"/posters/5"
+	"poster":"/posters/5.jpg"
   },
   {
     "id": "6",
     "name": "Schindler's List",
     "year": 1993,
     "rating": 8.9,
-	"poster":"/posters/6"
+	"poster":"/posters/6.jpg"
   },
   {
     "id": "7",
     "name": "Pulp Fiction",
     "year": 1994,
     "rating": 8.9,
-	"poster":"/posters/7"
+	"poster":"/posters/7.jpg"
   }
 ]

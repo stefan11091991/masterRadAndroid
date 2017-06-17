@@ -30,3 +30,9 @@ napisi implementaciju
 
 sutra i prekosutra - zavrsavanje i upeglavanje MVP-ija u doc-u tako da u nedelju uvece posaljem mejl filipovicu, eventualno nekad sledece nedelje
 takodje treba malo da upeglas i aplikaciju, da ima sta da se predstavi i neophodno je da napravis testove
+
+----------------------------------------------------------------------------------------------------------
+todo:
+mogao bih da drugacije dovlacis slike
+
+treba spinner da dodas

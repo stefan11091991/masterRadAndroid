@@ -48,6 +48,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-jackson:+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     compile 'io.reactivex:rxandroid:1.2.1'
