@@ -47,5 +47,40 @@
     "year": 1994,
     "rating": 8.9,
 	"poster":"/posters/7.jpg"
+  },
+  {
+    "id": "8",
+    "name": "The Lord of the Rings: The Return of the King",
+    "year": 2003,
+    "rating": 8.9,
+	"poster":"/posters/8.jpg"
+  },
+  {
+    "id": "9",
+    "name": "The Good, the Bad and the Ugly",
+    "year": 1966,
+    "rating": 8.8,
+	"poster":"/posters/9.jpg"
+  },
+  {
+    "id": "10",
+    "name": "Fight Club",
+    "year": 1999,
+    "rating": 8.8,
+	"poster":"/posters/10.jpg"
+  },
+  {
+    "id": "11",
+    "name": "The Lord of the Rings: The Fellowship of the Ring",
+    "year": 2001,
+    "rating": 8.8,
+	"poster":"/posters/11.jpg"
+  },
+  {
+    "id": "12",
+    "name": "Forrest Gump",
+    "year": 1994,
+    "rating": 8.7,
+	"poster":"/posters/12.jpg"
   }
 ]
