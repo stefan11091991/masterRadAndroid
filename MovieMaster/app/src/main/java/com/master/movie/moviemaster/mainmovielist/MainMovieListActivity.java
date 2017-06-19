@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.master.movie.moviemaster.R;
 import com.master.movie.moviemaster.dto.Movie;
@@ -29,6 +31,8 @@ public class MainMovieListActivity extends Activity implements MainMovieListCont
 
     @BindView(R.id.movie_list)
     RecyclerView movieList;
+    @BindView(R.id.progress_bar)
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,7 +49,13 @@ public class MainMovieListActivity extends Activity implements MainMovieListCont
     protected void onResume() {
         super.onResume();
         presenter.setView(this);
+        progressBar.setVisibility(View.VISIBLE);
         presenter.loadMovies();
+    }
+
+    @Override
+     public void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override

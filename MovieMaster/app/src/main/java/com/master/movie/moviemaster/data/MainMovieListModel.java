@@ -20,7 +20,7 @@ import rx.schedulers.Schedulers;
 
 
 /**
- * Created by stefa on 6/4/2017.
+ * Created by stefan on 6/4/2017.
  */
 
 public class MainMovieListModel {
@@ -34,33 +34,12 @@ public class MainMovieListModel {
     public Observable<List<Movie>> loadMovies() {
         return Observable.create((Observable.OnSubscribe<List<Movie>>) this::getMovies)
                 .flatMap(Observable::from)
-                .map(movie -> getPoster(movie))
+                .map(movie -> apiServiceWrapper.getPoster(movie))
                 .toList()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io());
     }
 
-    private Movie getPoster(Movie movie) {
-        OkHttpClient client = new OkHttpClient();
-
-        Request request = new Request.Builder()
-                .url(Constants.rootUrl + movie.getPoster())
-                .build();
-
-        try {
-            Response response = client.newCall(request).execute();
-            if(!response.isSuccessful()){
-                Log.d("ERROR", "response is unsuccessful");
-            } else {
-                byte[] inputStream = response.body().bytes();
-                movie.setPosterBitmap(BitmapFactory.decodeByteArray(inputStream, 0, inputStream.length));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return movie;
-    }
 
     private void getMovies(Subscriber<? super List<Movie>> subscriber) {
         try {

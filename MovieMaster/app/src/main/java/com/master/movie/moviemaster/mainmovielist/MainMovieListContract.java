@@ -10,11 +10,13 @@ import java.util.ArrayList;
 
 public interface MainMovieListContract {
     interface Presenter {
+        void setView(MainMovieListContract.View view);
         void loadMovies();
         void resetView();
     }
 
     interface View {
         void showMovies(ArrayList<Movie> movies);
+        void hideProgressBar();
     }
 }

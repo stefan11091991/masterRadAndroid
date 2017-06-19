@@ -24,6 +24,7 @@ public class MainMovieListPresenter implements MainMovieListContract.Presenter {
         this.mainMovieListModel = mainMovieListModel;
     }
 
+    @Override
     public void setView(MainMovieListContract.View view) {
         this.view = view;
     }
@@ -44,6 +45,7 @@ public class MainMovieListPresenter implements MainMovieListContract.Presenter {
 
                     @Override
                     public void onNext(List<Movie> movies) {
+                        view.hideProgressBar();
                         view.showMovies((ArrayList<Movie>) movies);
                     }
                 });
