@@ -1,7 +1,5 @@
 package com.master.movie.moviemaster.data;
 
-import android.util.Log;
-
 import com.master.movie.moviemaster.dto.Movie;
 import com.master.movie.moviemaster.internal.ApiServiceWrapper;
 
@@ -28,7 +26,6 @@ public class MainMovieListModel {
 
     public Observable<List<Movie>> loadMovies() {
         if (cachedMovies != null) {
-            Log.d("MyDebug", "ucitavam kes");
             return Observable.create((Observable.OnSubscribe<List<Movie>>) this::getMoviesFromCache)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io());
