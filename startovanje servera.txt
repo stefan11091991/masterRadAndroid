@@ -1,0 +1,2 @@
+cd Desktop/master_rad/server
+node index.js

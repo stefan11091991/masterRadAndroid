@@ -39,8 +39,6 @@ public class MainMovieListAdapter extends RecyclerView.Adapter<MovieHolder> {
 
         }
         holder.poster.setImageBitmap(movie.getPosterBitmap());
-
-        Log.d("MyDebug", "" + movie.getPoster());
     }
 
     @Override
