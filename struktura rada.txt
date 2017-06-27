@@ -1,11 +1,11 @@
-1.naslovna strana - done (1 strana)
-2. sadrzaj (2 strane)
+1.naslovna strana - done (1 strana) - done
+2. sadrzaj (1 strana)
 3. uvod - opste stvari kao u prijavi, zatim zasto je bitna arhitektura, 
 sta je bolje u odnosu na MVC i ono sto se pre koristilo, sta cu sve da predstavim, 
-kako ce da izgleda aplikacija (1 strana)
-4. MVP (Opsta prica, implementacija) (5 strana)
+kako ce da izgleda aplikacija (1 strana) - done
+4. MVP (Opsta prica, implementacija) (6 strana) - done
 5. MVVM (5 strana)
-6. Poredjenje MVP i MVVM (2 strane)
+6. Poredjenje MVP i MVVM (1 strana)
 7. RXJava (5 strana)
 8. RoboGuice (1-2 strane)
 9. Dagger2 (4 strane)
@@ -15,7 +15,7 @@ kako ce da izgleda aplikacija (1 strana)
 13. Zakljucak (1 strana)
 14. Literatura (1 strana)
 
- ako zafali materijala dodaj malo kotlin
+eventualno pomeni kotlin
 
 -----------------------------------------------------------------------------------------------------
 
@@ -39,3 +39,5 @@ model - pristup bazi, mrezi i ostalo, kesiranje podataka
 koristi onaj clanak sto si nasao za reference, kao i sample project
 Pisanje testova
 zakljucak: modularnost, testabilnost, lako odrzavanje
+
+

@@ -4,6 +4,5 @@ sve teorijski pa sve prakticno
 ili po oblast teorijski pa ista oblast prakticno
 ili da se aplikacija stalno provlaci kroz teoriju?
 
-takodje je l je ok da mokujem podatke, da li je bitno kako ce biti mokovani (jednostavno vs network call mock),\
-definitivno je pametno mokovati jer u supprotnom moze api da mi napravi problem jer ne zavisi od mene
+
 
