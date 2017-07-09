@@ -1,0 +1,13 @@
+proveri sve sto si napisao
+
+
+
+
+
+
+
+
+
+Eventualno ako treba:
+napisi neki test
+uradi dohvatanje AsyncTaskovima cisto da bi mogao da uporedis

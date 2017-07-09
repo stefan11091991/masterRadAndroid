@@ -6,7 +6,7 @@ kako ce da izgleda aplikacija (1 strana) - done
 4. MVP (Opsta prica, implementacija) (6 strana) - done
 5. MVVM (5 strana)
 6. Poredjenje MVP i MVVM (1 strana)
-7. RXJava (5 strana)
+7. RXJava (5 strana) - done
 8. RoboGuice (1-2 strane)
 9. Dagger2 (4 strane)
 10. poredjenje roboguice-a i daggera2 - (1 strana)  
@@ -39,5 +39,12 @@ model - pristup bazi, mrezi i ostalo, kesiranje podataka
 koristi onaj clanak sto si nasao za reference, kao i sample project
 Pisanje testova
 zakljucak: modularnost, testabilnost, lako odrzavanje
+-----------------------------------------------------------------------------------------------------------
 
+java 8 i android 
+opsta kratka prica Android i Java
+sta je generalno podrzano out of the box
+jack and jill
+retrolambda
+android studio 3.0
 
