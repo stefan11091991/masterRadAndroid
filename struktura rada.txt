@@ -44,6 +44,7 @@ zakljucak: modularnost, testabilnost, lako odrzavanje
 java 8 i android 
 opsta kratka prica Android i Java
 sta je generalno podrzano out of the box
+
 jack and jill
 retrolambda
 android studio 3.0
