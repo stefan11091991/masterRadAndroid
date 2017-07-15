@@ -1,6 +1,10 @@
 proveri sve sto si napisao
+insertuj reference
 
 
+
+ono sto je glavno je da proveris strukturu, da li je to ok, da dopunis gde si nedorecen,
+da dopunis reference, da sklonis gluposti, da 
 
 
 

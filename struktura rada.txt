@@ -49,3 +49,16 @@ jack and jill
 retrolambda
 android studio 3.0
 
+------------------------------------------------------------------------------------------------------------
+ prvo pisi o daggeru 2, posle implementiraj MVVM sa roboguicom i pisi o roboGuicu, MVVM, poredjenje MVVM i MVP, poredjenje Guice i Dagger2
+ i ostale biblioteke koriscene
+ 
+ plan - najkasnije 21.7. zavrsavam pricu o daggeru
+ 28.7. - zavrsavam implementaciju mvvm i guice
+ 4.8. guice
+ 15.8. mvvm 
+ 21.8. biblioteke
+ 1.9. - neka beta verzija rada
+
+
+
