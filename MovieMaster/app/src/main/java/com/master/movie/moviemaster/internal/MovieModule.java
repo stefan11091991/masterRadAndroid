@@ -9,7 +9,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by stefa on 6/4/2017.
+ * Created by stefan on 6/4/2017.
  */
 
 @Module

@@ -53,6 +53,11 @@ android studio 3.0
  prvo pisi o daggeru 2, posle implementiraj MVVM sa roboguicom i pisi o roboGuicu, MVVM, poredjenje MVVM i MVP, poredjenje Guice i Dagger2
  i ostale biblioteke koriscene
  
+ ------------------------------------------------------------------------------------------------------------
+ dagger - opsta prica, tipa kako je nastao, kako ga je google uzeo po okrilje
+ glavna struktura kako to izgleda, sta je modul, sta je komponenta, eventualno na jednostavnim primerima
+ implementacija u MVP-ju
+ 
  plan - najkasnije 21.7. zavrsavam pricu o daggeru
  28.7. - zavrsavam implementaciju mvvm i guice
  4.8. guice
