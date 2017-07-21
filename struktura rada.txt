@@ -7,10 +7,10 @@ kako ce da izgleda aplikacija (1 strana) - done
 5. MVVM (5 strana)
 6. Poredjenje MVP i MVVM (1 strana)
 7. RXJava (5 strana) - done
-8. RoboGuice (1-2 strane)
-9. Dagger2 (4 strane)
+8. RoboGuice (1-2 strane) - RoboGuice nije vise podrzan, nadji drugi DI koji koristi refleksiju ili batali roboguice
+9. Dagger2 (4 strane) - done teoretski deo
 10. poredjenje roboguice-a i daggera2 - (1 strana)  
-11. Java 8 i android (1 strana)
+11. Java 8 i android (1 strana) - done
 12. ButterKnife, Stetho, Fabric (3 strane)
 13. Zakljucak (1 strana)
 14. Literatura (1 strana)
@@ -58,12 +58,53 @@ android studio 3.0
  glavna struktura kako to izgleda, sta je modul, sta je komponenta, eventualno na jednostavnim primerima
  implementacija u MVP-ju
  
- plan - najkasnije 21.7. zavrsavam pricu o daggeru
- 28.7. - zavrsavam implementaciju mvvm i guice
- 4.8. guice
- 15.8. mvvm 
- 21.8. biblioteke
- 1.9. - neka beta verzija rada
 
+ ---------------------------------------------------------------------------------------------------------------------
+ roboguice vise nije podrzan, imas dve opcije da nadjes neki drugi DI framework koji se oslanja na refleksiju
+ ili da batalis, samo pomenes roboguice i sta je on znacio, pomenes i malo pokazes butterknife i to je to
+ Najbolje osvrt da postoje DI koji koriste refleksiju ali se istakne da su ona jela mnogo resursa i da se
+ sada najvise koristi dagger
+ 
+ plan za sledeci period za aplikaciju:
+ implementiraj MVVM - najbitnije - ovo odmah
+
+ pretraga - filtriranje na pocetnom ekranu
+ ocenjivanje - fake request ka servisu
+ favorizovanje - cuvanje u bazu, (saveMovieToFav), obelezavanje zvezdice ako je fav (isMOvieFav),
+ zatim citanje iz baze (retrieveFavMovies) i prikazivanje u novom activity-iju (ne mora neka posebna arhitektira da se pravi)
+ moracu da dodam zvezdicu pored svakog filma
+ moracu da napravim neki header za omiljene filmove, tu ce da bude i search
+ moci ce i iz omiljenih da se ode na detalje
+ razmotri da za prikaz omiljenih filmova koristis isti activity
+ 
+ plan za dalji rad:
+  MVVM - 7 strana
+ zavrsi deo oko implementacije daggera - 3 strane
+ sporedne biblioteke - 3 strane 
+ sadrzaj - 1 strana
+ zakljucak - 1 strana
+ 
+ vidi sta ces sa roboguice-om
+
+ sutra i prekosutra:
+ implementiraj movieDetails, eventualno posalji jos jedan mejl filipovicu
+ do 31.7. napisi MVVM
+ do 7. implementacja favorita i dagger zavrsi
+ do 15. neka prva verzija rada (biblioteke i zakljucak, sadrzaj)
+ dalje posle upeglavanje rada i zavrsetak aplikacije
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 

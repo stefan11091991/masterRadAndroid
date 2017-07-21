@@ -8,18 +8,12 @@ import android.app.Application;
 
 public class MovieMaster extends Application {
     private MovieComponent movieComponent;
-    private NetworkComponent networkComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        networkComponent=DaggerNetworkComponent.builder()
-                .appModule(new AppModule(this))
-                .networkModule(new NetworkModule())
-                .build();
 
         movieComponent = DaggerMovieComponent.builder()
-                .appModule(new AppModule(this))
                 .movieModule(new MovieModule())
                 .build();
 
@@ -29,7 +23,4 @@ public class MovieMaster extends Application {
         return movieComponent;
     }
 
-    public NetworkComponent getNetworkComponent() {
-        return networkComponent;
-    }
 }

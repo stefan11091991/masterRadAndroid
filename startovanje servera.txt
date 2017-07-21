@@ -1,2 +1,1 @@
-cd Desktop/master_rad/server
-node index.js
+cd Desktop/master_rad/server & node index.js
