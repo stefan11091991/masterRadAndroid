@@ -18,5 +18,6 @@ public interface MainMovieListContract {
     interface View {
         void showMovies(ArrayList<Movie> movies);
         void hideProgressBar();
+        void gotoMovieDetails(int movieId);
     }
 }

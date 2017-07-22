@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.master.movie.moviemaster.dto.Movie;
+import com.master.movie.moviemaster.dto.MovieDetails;
 import com.master.movie.moviemaster.util.Constants;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.util.Arrays;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import retrofit2.Call;
 import retrofit2.Response;
 
 /**
@@ -41,6 +43,24 @@ public class ApiServiceWrapper {
         return movies;
     }
 
+    public MovieDetails getMovieDetails(int movieId) {
+        MovieDetails movieDetails = new MovieDetails();
+        try {
+            Call<MovieDetails> call = apiService.getMovieDetail("/movieDetails/"
+                    + Integer.toString(movieId));
+            Response<MovieDetails> movieResponse = apiService.getMovieDetail("/movieDetails/"
+                    + Integer.toString(movieId)).execute();
+            if (movieResponse.isSuccessful()) {
+                movieDetails = movieResponse.body();
+            } else {
+                Log.e("ERROR", "bad response body");
+            }
+        } catch (IOException e) {
+            handleError(e);
+        }
+        return movieDetails;
+    }
+
     public Movie getPoster(Movie movie) {
         OkHttpClient client = new OkHttpClient();
 
@@ -50,7 +70,7 @@ public class ApiServiceWrapper {
 
         try {
             okhttp3.Response response = client.newCall(request).execute();
-            if(!response.isSuccessful()){
+            if (!response.isSuccessful()) {
                 Log.d("ERROR", "response is unsuccessful");
             } else {
                 byte[] inputStream = response.body().bytes();
@@ -64,7 +84,7 @@ public class ApiServiceWrapper {
     }
 
 
-    private void handleError(IOException e){
+    private void handleError(IOException e) {
         if (e instanceof JsonMappingException) {
             Log.e("ERROR", "JSON Mapping Problem");
         } else {

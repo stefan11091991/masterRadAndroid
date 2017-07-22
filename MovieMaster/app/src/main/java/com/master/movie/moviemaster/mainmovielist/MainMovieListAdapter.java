@@ -17,8 +17,10 @@ import java.util.ArrayList;
 
 public class MainMovieListAdapter extends RecyclerView.Adapter<MovieHolder> {
     private ArrayList<Movie> movies;
-    public MainMovieListAdapter(ArrayList<Movie> movies) {
+    private  MainMovieListContract.View callback;
+    public MainMovieListAdapter(ArrayList<Movie> movies,  MainMovieListContract.View callback) {
         this.movies = movies;
+        this.callback = callback;
     }
 
     @Override
@@ -39,6 +41,9 @@ public class MainMovieListAdapter extends RecyclerView.Adapter<MovieHolder> {
 
         }
         holder.poster.setImageBitmap(movie.getPosterBitmap());
+        holder.itemView.setOnClickListener(v -> {
+            callback.gotoMovieDetails(movie.getId());
+        });
     }
 
     @Override

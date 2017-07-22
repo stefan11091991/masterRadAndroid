@@ -8,6 +8,7 @@ import android.app.Application;
 
 public class MovieMaster extends Application {
     private MovieComponent movieComponent;
+    private MovieDetailsComponent movieDetailsComponent;
 
     @Override
     public void onCreate() {
@@ -17,10 +18,19 @@ public class MovieMaster extends Application {
                 .movieModule(new MovieModule())
                 .build();
 
+        movieDetailsComponent = DaggerMovieDetailsComponent.builder()
+                .movieDetailsModule(new MovieDetailsModule())
+                .build();
+
+
     }
 
     public MovieComponent getMovieComponent() {
         return movieComponent;
+    }
+
+    public MovieDetailsComponent getMovieDetailsComponent() {
+        return movieDetailsComponent;
     }
 
 }

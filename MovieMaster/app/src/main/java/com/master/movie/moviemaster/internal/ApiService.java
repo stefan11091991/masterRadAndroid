@@ -1,6 +1,7 @@
 package com.master.movie.moviemaster.internal;
 
 import com.master.movie.moviemaster.dto.Movie;
+import com.master.movie.moviemaster.dto.MovieDetails;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -14,4 +15,6 @@ import retrofit2.http.Url;
 public interface ApiService {
     @GET
     Call<Movie[]> getAllMovies(@Url String url);
+    @GET
+    Call<MovieDetails> getMovieDetail(@Url String url);
 }
