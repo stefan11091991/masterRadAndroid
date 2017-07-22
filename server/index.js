@@ -9,6 +9,14 @@ app.get('/all', function (req, res) {
    });
 })
 
+app.get('/movieDetails/:id', function(req, res){
+	   fs.readFile( __dirname + "/" + "movieDetails" + "/" + req.params.id + ".json", 'utf8', function (err, data) {
+       console.log( data );
+       res.end( data );
+   });
+
+})
+
 
 app.use("/posters", express.static(__dirname + "/posters"));
 
