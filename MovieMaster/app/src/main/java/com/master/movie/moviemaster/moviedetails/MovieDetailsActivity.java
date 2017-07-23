@@ -1,22 +1,13 @@
 package com.master.movie.moviemaster.moviedetails;
 
 import android.app.Activity;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
-import android.widget.TextView;
 
 import com.master.movie.moviemaster.R;
-import com.master.movie.moviemaster.data.MovieDetailsModel;
-import com.master.movie.moviemaster.dto.MovieDetails;
-import com.master.movie.moviemaster.internal.MovieMaster;
+import com.master.movie.moviemaster.databinding.ActivityMovieDetailsBinding;
 import com.master.movie.moviemaster.util.Constants;
-
-import javax.inject.Inject;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import rx.Subscriber;
 
 /**
  * Created by stefan.bacevic on 7/22/2017.
@@ -25,40 +16,30 @@ import rx.Subscriber;
 public class MovieDetailsActivity extends Activity {
 
     private MovieDetailsViewModel viewModel;
-    @BindView(R.id.movieId)
-    TextView movieIdTextView;
+    private ActivityMovieDetailsBinding binding;
+    private int movieId;
 
-//    //TODO ovo ces da sklonis
-//    @Inject
-//    MovieDetailsModel model;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        ((MovieMaster) getApplication()).getMovieDetailsComponent().inject(this);
-        setContentView(R.layout.activity_movie_details);
-        ButterKnife.bind(this);
-        int movieId = getIntent().getIntExtra(Constants.MOVIE_ID, 0);
+        movieId = getIntent().getIntExtra(Constants.MOVIE_ID, 0);
+
+
         if(viewModel==null) {
             viewModel = new MovieDetailsViewModel(movieId, getApplicationContext());
         }
-//        ovo ide odavde
-//        model.getMovieDetails(movieId)
-//                .subscribe(new Subscriber<MovieDetails>() {
-//                    @Override
-//                    public void onCompleted() {
-//                        Log.i("INFO", "Completed");
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        e.printStackTrace();
-//                    }
-//
-//                    @Override
-//                    public void onNext(MovieDetails movieDetails) {
-//                        movieIdTextView.setText(movieDetails.getCast().get(0));
-//                    }
-//                });
+        viewModel.loadMovieDetails();
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details);
+        binding.setMovieDetailsViewModel(viewModel);
+
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
 }
