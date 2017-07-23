@@ -24,36 +24,41 @@ import rx.Subscriber;
 
 public class MovieDetailsActivity extends Activity {
 
+    private MovieDetailsViewModel viewModel;
     @BindView(R.id.movieId)
     TextView movieIdTextView;
 
-    //TODO ovo ces da sklonis
-    @Inject
-    MovieDetailsModel model;
+//    //TODO ovo ces da sklonis
+//    @Inject
+//    MovieDetailsModel model;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((MovieMaster) getApplication()).getMovieDetailsComponent().inject(this);
+//        ((MovieMaster) getApplication()).getMovieDetailsComponent().inject(this);
         setContentView(R.layout.activity_movie_details);
         ButterKnife.bind(this);
         int movieId = getIntent().getIntExtra(Constants.MOVIE_ID, 0);
-        model.getMovieDetails(movieId)
-                .subscribe(new Subscriber<MovieDetails>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.i("INFO", "Completed");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(MovieDetails movieDetails) {
-                        movieIdTextView.setText(movieDetails.getCast().get(0));
-                    }
-                });
+        if(viewModel==null) {
+            viewModel = new MovieDetailsViewModel(movieId, getApplicationContext());
+        }
+//        ovo ide odavde
+//        model.getMovieDetails(movieId)
+//                .subscribe(new Subscriber<MovieDetails>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.i("INFO", "Completed");
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                    @Override
+//                    public void onNext(MovieDetails movieDetails) {
+//                        movieIdTextView.setText(movieDetails.getCast().get(0));
+//                    }
+//                });
     }
 }
