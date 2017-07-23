@@ -49,6 +49,7 @@ public class MovieDetailsViewModel extends BaseObservable {
                     public void onNext(MovieDetails newMovieDetails) {
                         movieDetails = newMovieDetails;
                         Log.d("MyDebug", "called on next");
+                        notifyChange();
                     }
                 });
 
@@ -61,8 +62,12 @@ public class MovieDetailsViewModel extends BaseObservable {
 
     @Bindable
     public String getStoryLine(){
-        Log.d("MyDebug", "called getStoryLine while storyline was " + movieDetails.getStoryLine());
-        return movieDetails.getStoryLine();
+        if(movieDetails!=null) {
+            Log.d("MyDebug", "called getStoryLine while storyline was " + movieDetails.getStoryLine());
+            return movieDetails.getStoryLine();
+        } else {
+            return "";
+        }
     }
 
 }

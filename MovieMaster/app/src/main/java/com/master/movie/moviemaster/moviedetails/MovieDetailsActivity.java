@@ -29,7 +29,6 @@ public class MovieDetailsActivity extends Activity {
         if(viewModel==null) {
             viewModel = new MovieDetailsViewModel(movieId, getApplicationContext());
         }
-        viewModel.loadMovieDetails();
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details);
         binding.setMovieDetailsViewModel(viewModel);
@@ -39,6 +38,8 @@ public class MovieDetailsActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        viewModel.loadMovieDetails();
+
 
     }
 

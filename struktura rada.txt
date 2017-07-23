@@ -87,13 +87,18 @@ android studio 3.0
  vidi sta ces sa roboguice-om
 
  sutra i prekosutra:
- implementiraj movieDetails, eventualno posalji jos jedan mejl filipovicu
+ implementiraj movieDetails, 
  do 31.7. napisi MVVM
  do 7. implementacja favorita i dagger zavrsi
  do 15. neka prva verzija rada (biblioteke i zakljucak, sadrzaj)
  dalje posle upeglavanje rada i zavrsetak aplikacije
  
- 
+ ostalo da se napise dohvatanje slike, spinner da se dodam
+ zakacivanje raskacivanje subskripcije
+ mozda bi bilo pametno da dodas i stetho sada
+ layout
+ dodavanje u favorite
+ razmisli sta ces za ocenjivanje
  
  
  
