@@ -17,3 +17,6 @@ napisi neki test
 uradi dohvatanje AsyncTaskovima cisto da bi mogao da uporedis
 
 bilo bi pametno da smanjis dimenzije postera
+
+
+dodaj zanr

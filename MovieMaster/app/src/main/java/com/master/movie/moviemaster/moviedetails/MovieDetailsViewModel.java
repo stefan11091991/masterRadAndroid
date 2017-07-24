@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
+import com.master.movie.moviemaster.R;
 import com.master.movie.moviemaster.data.MovieDetailsModel;
 import com.master.movie.moviemaster.dto.MovieDetails;
 import com.master.movie.moviemaster.internal.MovieMaster;
@@ -82,6 +83,16 @@ public class MovieDetailsViewModel extends BaseObservable {
     public String getName() {
         if (movieDetails != null) {
             return movieDetails.getName();
+        }
+        return "";
+    }
+
+    @Bindable
+    public String getRating() {
+        if (movieDetails != null) {
+            return context.getResources().getString(R.string.rating)
+                    + String.valueOf(movieDetails.getRating())
+                    + "/10";
         }
         return "";
     }

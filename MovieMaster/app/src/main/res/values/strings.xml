@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MovieMaster</string>
     <string name="test">Test</string>
+    <string name="add_to_favourites">Dodaj u omiljene</string>
+    <string name="add_to_watchlist">Pogledaj kasnije</string>
+    <string name="rating">Ocena:&#160;</string>
+    <string name="my_rating">Moja ocena</string>
 </resources>
