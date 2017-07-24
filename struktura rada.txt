@@ -93,7 +93,7 @@ android studio 3.0
  do 15. neka prva verzija rada (biblioteke i zakljucak, sadrzaj)
  dalje posle upeglavanje rada i zavrsetak aplikacije
  
- ostalo da se napise dohvatanje slike, spinner da se dodam
+ ostalo da se napise dohvatanje slike - done, spinner da se dodam
  zakacivanje raskacivanje subskripcije
  mozda bi bilo pametno da dodas i stetho sada
  layout

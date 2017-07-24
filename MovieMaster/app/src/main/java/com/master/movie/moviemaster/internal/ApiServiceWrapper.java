@@ -83,6 +83,28 @@ public class ApiServiceWrapper {
         return movie;
     }
 
+    public MovieDetails getPoster(MovieDetails movieDetails){
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url(Constants.rootUrl + movieDetails.getPoster())
+                .build();
+
+        try {
+            okhttp3.Response response = client.newCall(request).execute();
+            if (!response.isSuccessful()) {
+                Log.d("ERROR", "response is unsuccessful");
+            } else {
+                byte[] inputStream = response.body().bytes();
+                movieDetails.setPosterBitmap(BitmapFactory.decodeByteArray(inputStream, 0, inputStream.length));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return movieDetails;
+    }
+
 
     private void handleError(IOException e) {
         if (e instanceof JsonMappingException) {

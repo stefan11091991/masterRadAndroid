@@ -1,9 +1,10 @@
 package com.master.movie.moviemaster.moviedetails;
 
-import android.app.Application;
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.master.movie.moviemaster.data.MovieDetailsModel;
@@ -29,10 +30,11 @@ public class MovieDetailsViewModel extends BaseObservable {
 
     public MovieDetailsViewModel(int movieId, Context context) {
         this.movieId = movieId;
+        this.context = context;
         ((MovieMaster) context).getMovieDetailsComponent().inject(this);
     }
 
-    public void loadMovieDetails(){
+    public void loadMovieDetails() {
         model.getMovieDetails(movieId)
                 .subscribe(new Subscriber<MovieDetails>() {
                     @Override
@@ -56,18 +58,40 @@ public class MovieDetailsViewModel extends BaseObservable {
     }
 
     @Bindable
-    public String getFirstActor(){
+    public String getFirstActor() {
         return movieDetails.getCast().get(0);
     }
 
     @Bindable
-    public String getStoryLine(){
-        if(movieDetails!=null) {
-            Log.d("MyDebug", "called getStoryLine while storyline was " + movieDetails.getStoryLine());
+    public String getStoryLine() {
+        if (movieDetails != null) {
             return movieDetails.getStoryLine();
-        } else {
-            return "";
         }
+        return "";
+    }
+
+    @Bindable
+    public String getYear() {
+        if (movieDetails != null) {
+            return String.valueOf(movieDetails.getYear());
+        }
+        return "";
+    }
+
+    @Bindable
+    public String getName() {
+        if (movieDetails != null) {
+            return movieDetails.getName();
+        }
+        return "";
+    }
+
+    @Bindable
+    public Drawable getDrawable() {
+        if(movieDetails!=null){
+            return new BitmapDrawable(context.getResources(), movieDetails.getPosterBitmap());
+        }
+        return null;
     }
 
 }

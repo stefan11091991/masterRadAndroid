@@ -25,9 +25,11 @@ public class MovieDetailsModel {
         Log.d("MyDebug", "getMovieDetails");
         return Observable.create((Observable.OnSubscribe<MovieDetails>) subscriber ->
                 MovieDetailsModel.this.getMovieDetailsSub(subscriber, movieId))
+                .doOnNext(movieDetails -> apiServiceWrapper.getPoster(movieDetails))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io());
     }
+
 
     private void getMovieDetailsSub(Subscriber<? super MovieDetails> subscriber, int movieId) {
         try {
