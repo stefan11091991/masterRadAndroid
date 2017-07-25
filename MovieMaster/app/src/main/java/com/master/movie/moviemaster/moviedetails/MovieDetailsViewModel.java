@@ -3,6 +3,7 @@ package com.master.movie.moviemaster.moviedetails;
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.databinding.ObservableBoolean;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -15,6 +16,7 @@ import com.master.movie.moviemaster.internal.MovieMaster;
 import javax.inject.Inject;
 
 import rx.Subscriber;
+import rx.Subscription;
 
 /**
  * Created by stefan.bacevic on 7/23/2017.
@@ -23,7 +25,10 @@ import rx.Subscriber;
 public class MovieDetailsViewModel extends BaseObservable {
     private int movieId;
     private Context context;
+    private Subscription subscription;
     private MovieDetails movieDetails;
+    public final ObservableBoolean dataLoading = new ObservableBoolean(true);
+
 
     @Inject
     MovieDetailsModel model;
@@ -36,26 +41,37 @@ public class MovieDetailsViewModel extends BaseObservable {
     }
 
     public void loadMovieDetails() {
-        model.getMovieDetails(movieId)
-                .subscribe(new Subscriber<MovieDetails>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.i("INFO", "Completed");
-                    }
+        if(movieDetails==null) {
+            subscription = model.getMovieDetails(movieId)
+                    .subscribe(new Subscriber<MovieDetails>() {
+                        @Override
+                        public void onCompleted() {
+                            Log.i("INFO", "Completed");
+                        }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
+                        @Override
+                        public void onError(Throwable e) {
+                            e.printStackTrace();
+                        }
 
-                    @Override
-                    public void onNext(MovieDetails newMovieDetails) {
-                        movieDetails = newMovieDetails;
-                        Log.d("MyDebug", "called on next");
-                        notifyChange();
-                    }
-                });
+                        @Override
+                        public void onNext(MovieDetails newMovieDetails) {
+                            movieDetails = newMovieDetails;
+                            dataLoading.set(false);
+                            Log.d("MyDebug", "called on next");
+                            notifyChange();
+                        }
+                    });
+        } else {
+            dataLoading.set(false);
+        }
 
+    }
+
+    public void finishSubscriptions(){
+        if(!subscription.isUnsubscribed()){
+            subscription.unsubscribe();
+        }
     }
 
     @Bindable

@@ -20,3 +20,17 @@ bilo bi pametno da smanjis dimenzije postera
 
 
 dodaj zanr
+
+
+
+
+Ovde cu jos da dodam storyline, par recenica, zanr i glumce
+da ne bude ovoliki prazan prostor
+sta mislis o dizajnu generalno? Opeglacu ga jos malo, bice jos tog teksta da popuni rupe
+i napravicu lepsa ova dva dugmeta
+i verovatno cu malo da stavim vecu sliku
+i gore neke headere
+ali ovo je osnova
+i imace jos dva ekrana slicna ovom prvom za omiljene i watchlistu
+
+treba da se popuni za sve filmove sa liste JSONi
