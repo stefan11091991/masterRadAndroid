@@ -87,17 +87,23 @@ android studio 3.0
  vidi sta ces sa roboguice-om
 
  sutra i prekosutra:
- implementiraj movieDetails, 
- do 31.7. napisi MVVM
- do 7. implementacja favorita i dagger zavrsi
- do 15. neka prva verzija rada (biblioteke i zakljucak, sadrzaj)
+ do 30.7. implementacija cele aplikacije
+ do 11. MVVM
+ do 15. Dagger i neka prva verzija rada (biblioteke i zakljucak, sadrzaj)
  dalje posle upeglavanje rada i zavrsetak aplikacije
  
  ostalo da se napise dohvatanje slike - done, 
  spinner da se doda - done
  zakacivanje raskacivanje subskripcije - done
+ 
+ 
+ sreda: biblioteke, search
+ cetvrtak, petak, subota: favoriti i watchlista (prikaz bi mogao na slican fazon kao glavna lista)
+ nedelja : upeglavanje
+ 
+ 
  mozda bi bilo pametno da dodas i stetho sada
- i leak cannary
+ i fabric
  
  
  layout - ovde jos uradi promene iz TODO-a

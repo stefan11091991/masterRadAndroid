@@ -2,6 +2,8 @@ package com.master.movie.moviemaster.internal;
 
 import android.app.Application;
 
+import com.facebook.stetho.Stetho;
+
 /**
  * Created by stefan.bacevic on 6/4/2017.
  */
@@ -13,6 +15,7 @@ public class MovieMaster extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Stetho.initializeWithDefaults(this);
 
         movieComponent = DaggerMovieComponent.builder()
                 .movieModule(new MovieModule())

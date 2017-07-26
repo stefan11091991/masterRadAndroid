@@ -1,5 +1,7 @@
 package com.master.movie.moviemaster.internal;
 
+import com.facebook.stetho.Stetho;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.master.movie.moviemaster.util.Constants;
 
 import java.util.concurrent.TimeUnit;
@@ -24,8 +26,7 @@ public class NetworkModule {
                 .readTimeout(30, TimeUnit.SECONDS)
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(false)
-//                    TODO add this later
-//                    .addNetworkInterceptor(new StethoInterceptor())
+                .addNetworkInterceptor(new StethoInterceptor())
                 .build();
 
         return new Retrofit.Builder()
@@ -37,7 +38,7 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    ApiServiceWrapper provideApiServiceWrapper(){
+    ApiServiceWrapper provideApiServiceWrapper() {
         Retrofit retrofit = provideRetrofit();
         ApiService apiService = retrofit.create(ApiService.class);
         return new ApiServiceWrapper(apiService);
