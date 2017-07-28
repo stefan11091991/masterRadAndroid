@@ -3,6 +3,8 @@ package com.master.movie.moviemaster.internal;
 import android.app.Application;
 
 import com.facebook.stetho.Stetho;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by stefan.bacevic on 6/4/2017.
@@ -15,6 +17,7 @@ public class MovieMaster extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         Stetho.initializeWithDefaults(this);
 
         movieComponent = DaggerMovieComponent.builder()
