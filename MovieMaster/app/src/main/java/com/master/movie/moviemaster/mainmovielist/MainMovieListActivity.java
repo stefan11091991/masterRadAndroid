@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -73,11 +72,11 @@ public class MainMovieListActivity extends Activity implements MainMovieListCont
         super.onResume();
         presenter.setView(this);
         progressBar.setVisibility(View.VISIBLE);
-        presenter.loadMovies();
+        presenter.loadMovies("");
     }
 
     @Override
-     public void hideProgressBar() {
+    public void hideProgressBar() {
         progressBar.setVisibility(View.GONE);
     }
 
@@ -100,7 +99,7 @@ public class MainMovieListActivity extends Activity implements MainMovieListCont
             adapter = new MainMovieListAdapter(movies, this);
             movieList.setAdapter(adapter);
         } else {
-            adapter.notifyDataSetChanged();
+            adapter.update(movies);
         }
 
     }
@@ -118,22 +117,18 @@ public class MainMovieListActivity extends Activity implements MainMovieListCont
             LayoutUtils.hideKeyboard(searchBox);
             searchBox.setText("");
         });
+
         searchBox.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
 
             @Override
             public void afterTextChanged(Editable s) {
                 String query = s.toString();
-//                presenter.queryResults(collectFilterValues(), query);
+                presenter.loadMovies(query);
             }
         });
 

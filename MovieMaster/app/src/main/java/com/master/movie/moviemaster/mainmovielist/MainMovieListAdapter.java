@@ -50,4 +50,9 @@ public class MainMovieListAdapter extends RecyclerView.Adapter<MovieHolder> {
     public int getItemCount() {
         return movies.size();
     }
+
+    public void update(ArrayList<Movie> movies) {
+        this.movies = movies;
+        notifyDataSetChanged();
+    }
 }

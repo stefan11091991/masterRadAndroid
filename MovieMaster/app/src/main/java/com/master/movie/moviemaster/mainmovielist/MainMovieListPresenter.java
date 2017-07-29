@@ -30,8 +30,8 @@ public class MainMovieListPresenter implements MainMovieListContract.Presenter {
     }
 
     @Override
-    public void loadMovies() {
-        movieSubscription = mainMovieListModel.loadMovies()
+    public void loadMovies(String query) {
+        movieSubscription = mainMovieListModel.loadMovies(query)
                 .subscribe(new Subscriber<List<Movie>>() {
                     @Override
                     public void onCompleted() {
@@ -55,4 +55,5 @@ public class MainMovieListPresenter implements MainMovieListContract.Presenter {
     public void resetView() {
         view = null;
     }
+
 }

@@ -24,9 +24,12 @@ public class MainMovieListModel {
     }
 
 
-    public Observable<List<Movie>> loadMovies() {
+    public Observable<List<Movie>> loadMovies(String query) {
         if (cachedMovies != null) {
             return Observable.create((Observable.OnSubscribe<List<Movie>>) this::getMoviesFromCache)
+                    .flatMap(Observable::from)
+                    .filter(movie -> filterMovies(movie, query))
+                    .toList()
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io());
         } else {
@@ -39,6 +42,16 @@ public class MainMovieListModel {
                     .subscribeOn(Schedulers.io());
         }
     }
+
+    private boolean filterMovies(Movie movie, String query) {
+        if (query.isEmpty()) {
+            return true;
+        } else if (movie.getName().toLowerCase().contains(query.toLowerCase())) {
+            return true;
+        }
+        return false;
+    }
+
 
     private void cacheMovies(List<Movie> movies) {
         cachedMovies = movies;
@@ -64,4 +77,5 @@ public class MainMovieListModel {
             subscriber.onError(e);
         }
     }
+
 }

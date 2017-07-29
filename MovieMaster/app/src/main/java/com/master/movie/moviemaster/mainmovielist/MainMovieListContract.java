@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public interface MainMovieListContract {
     interface Presenter {
         void setView(MainMovieListContract.View view);
-        void loadMovies();
+        void loadMovies(String query);
         void resetView();
     }
 
