@@ -7,6 +7,7 @@ import android.databinding.ObservableBoolean;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.view.View;
 
 import com.master.movie.moviemaster.R;
 import com.master.movie.moviemaster.data.MovieDetailsModel;
@@ -72,6 +73,14 @@ public class MovieDetailsViewModel extends BaseObservable {
         if(!subscription.isUnsubscribed()){
             subscription.unsubscribe();
         }
+    }
+
+    public void addToFavourites(View view){
+        model.addToFavourites(movieDetails);
+    }
+
+    public void addToWatchlist(View view){
+        model.addToWatchlist(movieDetails);
     }
 
     @Bindable

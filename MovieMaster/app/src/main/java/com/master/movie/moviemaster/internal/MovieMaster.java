@@ -21,10 +21,12 @@ public class MovieMaster extends Application {
         Stetho.initializeWithDefaults(this);
 
         movieComponent = DaggerMovieComponent.builder()
+                .dBModule(new DBModule(this))
                 .movieModule(new MovieModule())
                 .build();
 
         movieDetailsComponent = DaggerMovieDetailsComponent.builder()
+                .dBModule(new DBModule(this))
                 .movieDetailsModule(new MovieDetailsModule())
                 .build();
 

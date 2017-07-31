@@ -10,7 +10,7 @@ import dagger.Component;
  * Created by stefan on 6/4/2017.
  */
 @Singleton
-@Component(modules={MovieModule.class, NetworkModule.class})
+@Component(modules={MovieModule.class, NetworkModule.class, DBModule.class})
 public interface MovieComponent {
 void inject(MainMovieListActivity activity);
 }

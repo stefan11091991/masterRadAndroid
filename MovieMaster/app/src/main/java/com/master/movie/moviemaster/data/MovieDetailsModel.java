@@ -2,8 +2,11 @@ package com.master.movie.moviemaster.data;
 
 import android.util.Log;
 
+import com.master.movie.moviemaster.database.DBHelper;
 import com.master.movie.moviemaster.dto.MovieDetails;
 import com.master.movie.moviemaster.internal.ApiServiceWrapper;
+
+import javax.inject.Inject;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -15,10 +18,13 @@ import rx.schedulers.Schedulers;
  */
 
 public class MovieDetailsModel {
+    DBHelper dbHelper;
+
     ApiServiceWrapper apiServiceWrapper;
 
-    public MovieDetailsModel(ApiServiceWrapper apiServiceWrapper) {
+    public MovieDetailsModel(ApiServiceWrapper apiServiceWrapper, DBHelper dbHelper) {
         this.apiServiceWrapper = apiServiceWrapper;
+        this.dbHelper = dbHelper;
     }
 
     public Observable<MovieDetails> getMovieDetails(int movieId) {
@@ -41,4 +47,11 @@ public class MovieDetailsModel {
         }
     }
 
+    public void addToFavourites(MovieDetails movieDetails) {
+        dbHelper.insertMovieToFavourites(movieDetails);
+    }
+
+    public void addToWatchlist(MovieDetails movieDetails) {
+        dbHelper.insertMovieToWatchlist(movieDetails);
+    }
 }

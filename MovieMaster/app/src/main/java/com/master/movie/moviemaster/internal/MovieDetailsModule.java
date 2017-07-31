@@ -1,6 +1,7 @@
 package com.master.movie.moviemaster.internal;
 
 import com.master.movie.moviemaster.data.MovieDetailsModel;
+import com.master.movie.moviemaster.database.DBHelper;
 
 import javax.inject.Singleton;
 
@@ -14,8 +15,8 @@ import dagger.Provides;
 public class MovieDetailsModule {
     @Provides
     @Singleton
-    MovieDetailsModel provideMovieDetailsModel(ApiServiceWrapper apiServiceWrapper) {
-        return new MovieDetailsModel(apiServiceWrapper);
+    MovieDetailsModel provideMovieDetailsModel(ApiServiceWrapper apiServiceWrapper, DBHelper dbHelper) {
+        return new MovieDetailsModel(apiServiceWrapper, dbHelper);
     }
 
 }

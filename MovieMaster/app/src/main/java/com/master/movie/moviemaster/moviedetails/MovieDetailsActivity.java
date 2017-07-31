@@ -25,8 +25,7 @@ public class MovieDetailsActivity extends Activity {
         super.onCreate(savedInstanceState);
         movieId = getIntent().getIntExtra(Constants.MOVIE_ID, 0);
 
-
-        if(viewModel==null) {
+        if (viewModel == null) {
             viewModel = new MovieDetailsViewModel(movieId, getApplicationContext());
         }
 
