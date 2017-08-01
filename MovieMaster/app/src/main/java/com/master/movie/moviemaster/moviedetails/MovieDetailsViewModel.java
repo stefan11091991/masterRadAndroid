@@ -30,7 +30,6 @@ public class MovieDetailsViewModel extends BaseObservable {
     private MovieDetails movieDetails;
     public final ObservableBoolean dataLoading = new ObservableBoolean(true);
 
-
     @Inject
     MovieDetailsModel model;
 
@@ -83,6 +82,10 @@ public class MovieDetailsViewModel extends BaseObservable {
         model.addToWatchlist(movieDetails);
     }
 
+    public void rateMovie(View view, float newRating, boolean fromUser){
+        Log.d("MyDebug", "rating is " + newRating);
+    }
+
     @Bindable
     public String getFirstActor() {
         return movieDetails.getCast().get(0);
@@ -129,5 +132,4 @@ public class MovieDetailsViewModel extends BaseObservable {
         }
         return null;
     }
-
 }
