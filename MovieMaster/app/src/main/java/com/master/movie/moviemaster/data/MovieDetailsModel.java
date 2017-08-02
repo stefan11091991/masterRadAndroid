@@ -54,4 +54,12 @@ public class MovieDetailsModel {
     public void addToWatchlist(MovieDetails movieDetails) {
         dbHelper.insertMovieToWatchlist(movieDetails);
     }
+
+    public void rateMovie(int movieId, float newRating) {
+        dbHelper.rateMovie(movieId, newRating);
+    }
+
+    public float getMyMovieRating(int movieId) {
+        return dbHelper.getMyMovieRating(movieId);
+    }
 }

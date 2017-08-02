@@ -83,7 +83,7 @@ public class MovieDetailsViewModel extends BaseObservable {
     }
 
     public void rateMovie(View view, float newRating, boolean fromUser){
-        Log.d("MyDebug", "rating is " + newRating);
+        model.rateMovie(movieId, newRating);
     }
 
     @Bindable
@@ -97,6 +97,11 @@ public class MovieDetailsViewModel extends BaseObservable {
             return movieDetails.getStoryLine();
         }
         return "";
+    }
+
+    @Bindable
+    public float getMyRating(){
+        return model.getMyMovieRating(movieId);
     }
 
     @Bindable

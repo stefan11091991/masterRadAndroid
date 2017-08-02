@@ -19,7 +19,7 @@ public final class DBContract {
         public static final String CAST = "cast";
     }
 
-    public static class WathclistEntry implements BaseColumns{
+    public static class WatchlistEntry implements BaseColumns{
         public static final String TABLE_NAME = "watchlist";
         public static final String MOVIE_ID = "movie_id";
         public static final String NAME = "name";
@@ -28,6 +28,13 @@ public final class DBContract {
         public static final String POSTER = "poster";
         public static final String STORYLINE = "storyline";
         public static final String CAST = "cast";
+    }
+
+    public static class MovieRating implements BaseColumns{
+        public static final String TABLE_NAME = "movie_rating";
+        public static final String MOVIE_ID = "movie_id";
+        public static final String RATING = "rating";
+
     }
 
 }
