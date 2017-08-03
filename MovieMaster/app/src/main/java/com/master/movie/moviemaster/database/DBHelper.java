@@ -46,6 +46,10 @@ public class DBHelper extends SQLiteOpenHelper {
             + " WHERE " + DBContract.FavouritesEntry.MOVIE_ID + " =?";
     private static final String SQL_REMOVE_MOVIE_FROM_FAVOURITES = "DELETE FROM " + DBContract.FavouritesEntry.TABLE_NAME
             + " WHERE " + DBContract.FavouritesEntry.MOVIE_ID + " =?";
+    private static final String SQL_IS_MOVIE_IN_WATCHLIST = "SELECT * FROM " + DBContract.WatchlistEntry.TABLE_NAME
+            + " WHERE " + DBContract.WatchlistEntry.MOVIE_ID + " =?";
+    private static final String SQL_REMOVE_MOVIE_FROM_WATCHLIST = "DELETE FROM " + DBContract.WatchlistEntry.TABLE_NAME
+            + " WHERE " + DBContract.WatchlistEntry.MOVIE_ID + " =?";
 
 
 
@@ -136,5 +140,20 @@ public class DBHelper extends SQLiteOpenHelper {
     public void removeFromFavourites(int movieId) {
         SQLiteDatabase db = this.getReadableDatabase();
         db.execSQL(SQL_REMOVE_MOVIE_FROM_FAVOURITES, new String[]{String.valueOf(movieId)});
+    }
+
+    public void removeFromWatchlist(int movieId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.execSQL(SQL_REMOVE_MOVIE_FROM_WATCHLIST, new String[]{String.valueOf(movieId)});
+    }
+
+    public boolean isMovieInWatchlist(int movieId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(SQL_IS_MOVIE_IN_WATCHLIST, new String[]{String.valueOf(movieId)});
+        if (cursor.getCount() > 0) {
+            return true;
+        }
+        cursor.close();
+        return false;
     }
 }

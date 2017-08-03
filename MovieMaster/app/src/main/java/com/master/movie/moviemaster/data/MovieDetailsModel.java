@@ -70,4 +70,12 @@ public class MovieDetailsModel {
     public void deleteFromFavourites(int movieId) {
         dbHelper.removeFromFavourites(movieId);
     }
+
+    public void deleteFromWatchlist(int movieId) {
+        dbHelper.removeFromWatchlist(movieId);
+    }
+
+    public boolean isMovieInWatchlist(int movieId) {
+        return dbHelper.isMovieInWatchlist(movieId);
+    }
 }

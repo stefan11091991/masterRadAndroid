@@ -31,6 +31,8 @@ public class MovieDetailsViewModel extends BaseObservable {
     private MovieDetails movieDetails;
     public final ObservableBoolean dataLoading = new ObservableBoolean(true);
     public final ObservableBoolean isFavourite = new ObservableBoolean(false);
+    public final ObservableBoolean isInWatchlist = new ObservableBoolean(false);
+
 
     @Inject
     MovieDetailsModel model;
@@ -41,6 +43,7 @@ public class MovieDetailsViewModel extends BaseObservable {
         this.context = context;
         ((MovieMaster) context).getMovieDetailsComponent().inject(this);
         isFavourite.set(model.isMovieFavourite(movieId));
+        isInWatchlist.set(model.isMovieInWatchlist(movieId));
     }
 
     public void loadMovieDetails() {
@@ -77,9 +80,9 @@ public class MovieDetailsViewModel extends BaseObservable {
         }
     }
 
-    public void addToFavourites(View view) {
+    public void toggleFavourites(View view) {
         if (isFavourite.get()) {
-            Toast.makeText(context, context.getString(R.string.remove_from_favourites), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getString(R.string.movie_deleted_from_favourites), Toast.LENGTH_SHORT).show();
             model.deleteFromFavourites(movieId);
             isFavourite.set(false);
         } else {
@@ -89,9 +92,16 @@ public class MovieDetailsViewModel extends BaseObservable {
         }
     }
 
-    public void addToWatchlist(View view) {
-        Toast.makeText(context, context.getString(R.string.movie_added_to_watchlist), Toast.LENGTH_SHORT).show();
-        model.addToWatchlist(movieDetails);
+    public void toggleWatchlist(View view) {
+        if (isInWatchlist.get()) {
+            Toast.makeText(context, context.getString(R.string.movie_deleted_from_watchlist), Toast.LENGTH_SHORT).show();
+            model.deleteFromWatchlist(movieId);
+            isInWatchlist.set(false);
+        } else {
+            Toast.makeText(context, context.getString(R.string.movie_added_to_watchlist), Toast.LENGTH_SHORT).show();
+            model.addToWatchlist(movieDetails);
+            isInWatchlist.set(true);
+        }
     }
 
     public void rateMovie(View view, float newRating, boolean fromUser) {
@@ -148,15 +158,6 @@ public class MovieDetailsViewModel extends BaseObservable {
             return new BitmapDrawable(context.getResources(), movieDetails.getPosterBitmap());
         }
         return null;
-    }
-
-    @Bindable
-    public String getFavouritesButtonText() {
-        if (model.isMovieFavourite(movieId)) {
-            return context.getString(R.string.remove_from_favourites);
-        }
-
-        return context.getString(R.string.add_to_favourites);
     }
 
 }
