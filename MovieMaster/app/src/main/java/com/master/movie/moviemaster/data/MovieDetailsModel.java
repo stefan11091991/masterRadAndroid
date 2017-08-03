@@ -62,4 +62,12 @@ public class MovieDetailsModel {
     public float getMyMovieRating(int movieId) {
         return dbHelper.getMyMovieRating(movieId);
     }
+
+    public boolean isMovieFavourite(int movieId) {
+        return dbHelper.isMovieFavourite(movieId);
+    }
+
+    public void deleteFromFavourites(int movieId) {
+        dbHelper.removeFromFavourites(movieId);
+    }
 }

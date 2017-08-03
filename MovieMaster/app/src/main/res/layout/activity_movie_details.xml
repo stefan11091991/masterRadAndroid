@@ -123,7 +123,7 @@
             android:layout_marginLeft="24dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="13dp"
-            android:text="@string/add_to_favourites"
+            android:text="@{movieDetailsViewModel.isFavourite ? @string/movie_deleted_from_favourites : @string/add_to_favourites}"
             android:onClick="@{movieDetailsViewModel::addToFavourites}"
             android:textSize="14sp"
             app:layout_constraintHorizontal_bias="0.0"

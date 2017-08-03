@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.master.movie.moviemaster.R;
 import com.master.movie.moviemaster.data.MovieDetailsModel;
@@ -29,6 +30,7 @@ public class MovieDetailsViewModel extends BaseObservable {
     private Subscription subscription;
     private MovieDetails movieDetails;
     public final ObservableBoolean dataLoading = new ObservableBoolean(true);
+    public final ObservableBoolean isFavourite = new ObservableBoolean(false);
 
     @Inject
     MovieDetailsModel model;
@@ -38,10 +40,11 @@ public class MovieDetailsViewModel extends BaseObservable {
         this.movieId = movieId;
         this.context = context;
         ((MovieMaster) context).getMovieDetailsComponent().inject(this);
+        isFavourite.set(model.isMovieFavourite(movieId));
     }
 
     public void loadMovieDetails() {
-        if(movieDetails==null) {
+        if (movieDetails == null) {
             subscription = model.getMovieDetails(movieId)
                     .subscribe(new Subscriber<MovieDetails>() {
                         @Override
@@ -68,21 +71,30 @@ public class MovieDetailsViewModel extends BaseObservable {
 
     }
 
-    public void finishSubscriptions(){
-        if(!subscription.isUnsubscribed()){
+    public void finishSubscriptions() {
+        if (!subscription.isUnsubscribed()) {
             subscription.unsubscribe();
         }
     }
 
-    public void addToFavourites(View view){
-        model.addToFavourites(movieDetails);
+    public void addToFavourites(View view) {
+        if (isFavourite.get()) {
+            Toast.makeText(context, context.getString(R.string.remove_from_favourites), Toast.LENGTH_SHORT).show();
+            model.deleteFromFavourites(movieId);
+            isFavourite.set(false);
+        } else {
+            Toast.makeText(context, context.getString(R.string.movie_added_to_favourites), Toast.LENGTH_SHORT).show();
+            model.addToFavourites(movieDetails);
+            isFavourite.set(true);
+        }
     }
 
-    public void addToWatchlist(View view){
+    public void addToWatchlist(View view) {
+        Toast.makeText(context, context.getString(R.string.movie_added_to_watchlist), Toast.LENGTH_SHORT).show();
         model.addToWatchlist(movieDetails);
     }
 
-    public void rateMovie(View view, float newRating, boolean fromUser){
+    public void rateMovie(View view, float newRating, boolean fromUser) {
         model.rateMovie(movieId, newRating);
     }
 
@@ -100,7 +112,7 @@ public class MovieDetailsViewModel extends BaseObservable {
     }
 
     @Bindable
-    public float getMyRating(){
+    public float getMyRating() {
         return model.getMyMovieRating(movieId);
     }
 
@@ -132,9 +144,19 @@ public class MovieDetailsViewModel extends BaseObservable {
 
     @Bindable
     public Drawable getDrawable() {
-        if(movieDetails!=null){
+        if (movieDetails != null) {
             return new BitmapDrawable(context.getResources(), movieDetails.getPosterBitmap());
         }
         return null;
     }
+
+    @Bindable
+    public String getFavouritesButtonText() {
+        if (model.isMovieFavourite(movieId)) {
+            return context.getString(R.string.remove_from_favourites);
+        }
+
+        return context.getString(R.string.add_to_favourites);
+    }
+
 }

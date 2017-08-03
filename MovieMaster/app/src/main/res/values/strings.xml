@@ -7,4 +7,10 @@
     <string name="my_rating">Moja ocena</string>
     <string name="movie_master">MovieMaster</string>
     <string name="search">Pretraga</string>
+    <string name="movie_added_to_favourites">Film je dodat u favorite.</string>
+    <string name="movie_added_to_watchlist">Film je sačuvan za gledanje kasnije.</string>
+    <string name="movie_deleted_from_favourites">Film je uklonjen iz favorita.</string>
+    <string name="movie_deleted_from_watchlist">Film je uklonjen iz liste.</string>
+    <string name="remove_from_favourites">Ukloni iz omiljenih</string>
+    <string name="remove_from_watchlist">Ukloni iz liste.</string>
 </resources>

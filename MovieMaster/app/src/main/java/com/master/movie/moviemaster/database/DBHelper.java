@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.master.movie.moviemaster.dto.MovieDetails;
@@ -41,6 +42,11 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String SQL_RETRIEVE_RATING = "SELECT " + DBContract.MovieRating.RATING
             + " FROM " + DBContract.MovieRating.TABLE_NAME + " WHERE "
             + DBContract.MovieRating.MOVIE_ID + "=?";
+    private static final String SQL_IS_MOVIE_FAVOURITE = "SELECT * FROM " + DBContract.FavouritesEntry.TABLE_NAME
+            + " WHERE " + DBContract.FavouritesEntry.MOVIE_ID + " =?";
+    private static final String SQL_REMOVE_MOVIE_FROM_FAVOURITES = "DELETE FROM " + DBContract.FavouritesEntry.TABLE_NAME
+            + " WHERE " + DBContract.FavouritesEntry.MOVIE_ID + " =?";
+
 
 
     public DBHelper(Context context) {
@@ -114,5 +120,21 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return rating;
+    }
+
+    public boolean isMovieFavourite(int movieId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(SQL_IS_MOVIE_FAVOURITE, new String[]{String.valueOf(movieId)});
+        if (cursor.getCount() > 0) {
+            return true;
+        }
+        cursor.close();
+        return false;
+    }
+
+
+    public void removeFromFavourites(int movieId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.execSQL(SQL_REMOVE_MOVIE_FROM_FAVOURITES, new String[]{String.valueOf(movieId)});
     }
 }
