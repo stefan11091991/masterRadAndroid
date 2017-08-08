@@ -55,6 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String SQL_REMOVE_MOVIE_FROM_WATCHLIST = "DELETE FROM " + DBContract.WatchlistEntry.TABLE_NAME
             + " WHERE " + DBContract.WatchlistEntry.MOVIE_ID + " =?";
     private static final String SQL_GET_WATCHLIST_MOVIES = "SELECT * FROM " + DBContract.WatchlistEntry.TABLE_NAME;
+    private static final String SQL_GET_FAVOURITES = "SELECT * FROM " + DBContract.FavouritesEntry.TABLE_NAME;
 
 
 
@@ -186,5 +187,31 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return watchlistMovies;
     }
+
+    public ArrayList<MovieDetails> getAllMoviesFromFavourites(){
+        ArrayList<MovieDetails> watchlistMovies = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(SQL_GET_FAVOURITES, new String[]{});
+        while (cursor.moveToNext()) {
+            MovieDetails movieDetails = new MovieDetails();
+            movieDetails.setId(cursor.getInt(cursor.getColumnIndex(DBContract.FavouritesEntry.MOVIE_ID)));
+            movieDetails.setName(cursor.getString(cursor.getColumnIndex(DBContract.FavouritesEntry.NAME)));
+            movieDetails.setYear(cursor.getInt(cursor.getColumnIndex(DBContract.FavouritesEntry.YEAR)));
+            movieDetails.setRating(cursor.getDouble(cursor.getColumnIndex(DBContract.FavouritesEntry.RATING)));
+            movieDetails.setStoryLine(cursor.getString(cursor.getColumnIndex(DBContract.FavouritesEntry.STORYLINE)));
+            movieDetails.setPosterBitmap(DbBitmapUtil.getImage(cursor.getBlob(cursor.getColumnIndex(DBContract.FavouritesEntry.POSTER))));
+            Type type = new TypeToken<ArrayList<String>>() {}.getType();
+            Gson gson = new Gson();
+            ArrayList<String> cast = gson.fromJson(cursor.getString(cursor.getColumnIndex(DBContract.FavouritesEntry.CAST)), type);
+            movieDetails.setCast(cast);
+
+            watchlistMovies.add(movieDetails);
+        }
+        cursor.close();
+
+
+        return watchlistMovies;
+    }
+
 
 }

@@ -1,15 +1,12 @@
 package com.master.movie.moviemaster.customlists;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.master.movie.moviemaster.R;
-import com.master.movie.moviemaster.dto.Movie;
 import com.master.movie.moviemaster.dto.MovieDetails;
-import com.master.movie.moviemaster.mainmovielist.*;
 
 import java.util.ArrayList;
 
@@ -20,18 +17,18 @@ import java.util.ArrayList;
 public class CustomListAdapter extends RecyclerView.Adapter<CustomListMovieHolder> {
 
     private ArrayList<MovieDetails> moviesDetails;
-    Context context;
+    CustomListActivity activity;
 
-    public CustomListAdapter(ArrayList<MovieDetails> moviesDetails, Context context) {
+    public CustomListAdapter(ArrayList<MovieDetails> moviesDetails, CustomListActivity activity) {
         this.moviesDetails = moviesDetails;
-        this.context = context;
+        this.activity = activity;
     }
 
     @Override
     public CustomListMovieHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.item_movie_list, parent, false);
+                .inflate(R.layout.item_custom_list, parent, false);
         return new CustomListMovieHolder(view);
 
     }
@@ -42,13 +39,18 @@ public class CustomListAdapter extends RecyclerView.Adapter<CustomListMovieHolde
         holder.movieName.setText(movie.getName());
         holder.rating.setText(String.valueOf(movie.getRating()));
         holder.year.setText(String.valueOf(movie.getYear()));
-        if(movie.getPosterBitmap() == null){
+        if (movie.getPosterBitmap() == null) {
 
         }
         holder.poster.setImageBitmap(movie.getPosterBitmap());
-//        holder.itemView.setOnClickListener(v -> {
-//            callback.gotoMovieDetails(movie.getId());
-//        });
+
+        holder.delete.setOnClickListener(v -> {
+            activity.removeFromList(movie.getId());
+        });
+        holder.itemView.setOnClickListener(v -> {
+            activity.gotoMovieDetails(movie.getId());
+        });
+
 
     }
 
@@ -61,4 +63,6 @@ public class CustomListAdapter extends RecyclerView.Adapter<CustomListMovieHolde
         this.moviesDetails = movies;
         notifyDataSetChanged();
     }
+
+
 }

@@ -144,7 +144,7 @@ public class MainMovieListActivity extends Activity implements MainMovieListCont
         startActivity(intent);
     }
 
-    @OnClick(R.id.watchlist)
+    @OnClick(R.id.favourites)
     public void gotoFavourites(){
         Intent intent = new Intent(this, CustomListActivity.class);
         intent.putExtra(Constants.TYPE, Constants.FAVOURITES);

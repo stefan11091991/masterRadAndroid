@@ -25,6 +25,8 @@ public class CustomListMovieHolder extends RecyclerView.ViewHolder {
     public TextView rating;
     @BindView(R.id.year)
     public TextView year;
+    @BindView(R.id.delete)
+    public ImageView delete;
 
     public CustomListMovieHolder(View itemView) {
         super(itemView);

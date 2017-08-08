@@ -1,6 +1,7 @@
 package com.master.movie.moviemaster.customlists;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import com.master.movie.moviemaster.dto.Movie;
 import com.master.movie.moviemaster.dto.MovieDetails;
 import com.master.movie.moviemaster.internal.MovieMaster;
 import com.master.movie.moviemaster.mainmovielist.MainMovieListAdapter;
+import com.master.movie.moviemaster.moviedetails.MovieDetailsActivity;
 import com.master.movie.moviemaster.util.Constants;
 
 import java.util.ArrayList;
@@ -48,8 +50,6 @@ public class CustomListActivity extends Activity {
         type = getIntent().getStringExtra(Constants.TYPE);
         setContentView(R.layout.activity_custom_list);
         ButterKnife.bind(this);
-        Log.d("MyDebug", "type is " + type);
-        Log.d("MyDebug", "dbhelper " + dbHelper.getAllMoviesFromWatchlist().get(0).getName());
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         movieList.setLayoutManager(layoutManager);
 
@@ -59,7 +59,11 @@ public class CustomListActivity extends Activity {
     protected void onResume() {
         super.onResume();
         progressBar.setVisibility(GONE);
-        showMovies(dbHelper.getAllMoviesFromWatchlist());
+        if (type.equals(Constants.WATCHLIST)) {
+            showMovies(dbHelper.getAllMoviesFromWatchlist());
+        } else {
+            showMovies(dbHelper.getAllMoviesFromFavourites());
+        }
     }
 
     public void showMovies(ArrayList<MovieDetails> movies) {
@@ -71,4 +75,24 @@ public class CustomListActivity extends Activity {
         }
     }
 
+    public void gotoMovieDetails(int movieId) {
+        Intent intent = new Intent(this, MovieDetailsActivity.class);
+        intent.putExtra(Constants.MOVIE_ID, movieId);
+        startActivity(intent);
+    }
+
+    public void removeFromList(int movieId) {
+        if (type.equals(Constants.WATCHLIST)) {
+            dbHelper.removeFromWatchlist(movieId);
+        } else {
+            dbHelper.removeFromFavourites(movieId);
+        }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        adapter = null;
+    }
 }
