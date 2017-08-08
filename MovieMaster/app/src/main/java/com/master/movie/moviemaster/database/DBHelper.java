@@ -8,8 +8,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.master.movie.moviemaster.dto.MovieDetails;
 import com.master.movie.moviemaster.internal.MovieMaster;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 /**
  * Created by stefan.bacevic on 7/31/2017.
@@ -50,6 +54,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + " WHERE " + DBContract.WatchlistEntry.MOVIE_ID + " =?";
     private static final String SQL_REMOVE_MOVIE_FROM_WATCHLIST = "DELETE FROM " + DBContract.WatchlistEntry.TABLE_NAME
             + " WHERE " + DBContract.WatchlistEntry.MOVIE_ID + " =?";
+    private static final String SQL_GET_WATCHLIST_MOVIES = "SELECT * FROM " + DBContract.WatchlistEntry.TABLE_NAME;
 
 
 
@@ -156,4 +161,30 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         return false;
     }
+
+    public ArrayList<MovieDetails> getAllMoviesFromWatchlist(){
+        ArrayList<MovieDetails> watchlistMovies = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(SQL_GET_WATCHLIST_MOVIES, new String[]{});
+        while (cursor.moveToNext()) {
+            MovieDetails movieDetails = new MovieDetails();
+            movieDetails.setId(cursor.getInt(cursor.getColumnIndex(DBContract.WatchlistEntry.MOVIE_ID)));
+            movieDetails.setName(cursor.getString(cursor.getColumnIndex(DBContract.WatchlistEntry.NAME)));
+            movieDetails.setYear(cursor.getInt(cursor.getColumnIndex(DBContract.WatchlistEntry.YEAR)));
+            movieDetails.setRating(cursor.getDouble(cursor.getColumnIndex(DBContract.WatchlistEntry.RATING)));
+            movieDetails.setStoryLine(cursor.getString(cursor.getColumnIndex(DBContract.WatchlistEntry.STORYLINE)));
+            movieDetails.setPosterBitmap(DbBitmapUtil.getImage(cursor.getBlob(cursor.getColumnIndex(DBContract.WatchlistEntry.POSTER))));
+            Type type = new TypeToken<ArrayList<String>>() {}.getType();
+            Gson gson = new Gson();
+            ArrayList<String> cast = gson.fromJson(cursor.getString(cursor.getColumnIndex(DBContract.WatchlistEntry.CAST)), type);
+            movieDetails.setCast(cast);
+
+            watchlistMovies.add(movieDetails);
+        }
+        cursor.close();
+
+
+        return watchlistMovies;
+    }
+
 }

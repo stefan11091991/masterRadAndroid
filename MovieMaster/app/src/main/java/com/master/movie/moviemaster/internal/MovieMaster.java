@@ -13,6 +13,7 @@ import io.fabric.sdk.android.Fabric;
 public class MovieMaster extends Application {
     private MovieComponent movieComponent;
     private MovieDetailsComponent movieDetailsComponent;
+    private CustomListComponent customListComponent;
 
     @Override
     public void onCreate() {
@@ -30,7 +31,9 @@ public class MovieMaster extends Application {
                 .movieDetailsModule(new MovieDetailsModule())
                 .build();
 
-
+        customListComponent = DaggerCustomListComponent.builder()
+                .dBModule(new DBModule(this))
+                .build();
     }
 
     public MovieComponent getMovieComponent() {
@@ -41,4 +44,7 @@ public class MovieMaster extends Application {
         return movieDetailsComponent;
     }
 
+    public CustomListComponent getCustomListComponent() {
+        return customListComponent;
+    }
 }

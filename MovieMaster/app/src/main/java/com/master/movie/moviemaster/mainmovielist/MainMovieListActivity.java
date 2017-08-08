@@ -11,10 +11,12 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.master.movie.moviemaster.R;
+import com.master.movie.moviemaster.customlists.CustomListActivity;
 import com.master.movie.moviemaster.dto.Movie;
 import com.master.movie.moviemaster.internal.MovieMaster;
 import com.master.movie.moviemaster.moviedetails.MovieDetailsActivity;
@@ -27,6 +29,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by stefan on 6/4/2017.
@@ -134,4 +137,17 @@ public class MainMovieListActivity extends Activity implements MainMovieListCont
 
     }
 
+    @OnClick(R.id.watchlist)
+    public void gotoWatchlist(){
+        Intent intent = new Intent(this, CustomListActivity.class);
+        intent.putExtra(Constants.TYPE, Constants.WATCHLIST);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.watchlist)
+    public void gotoFavourites(){
+        Intent intent = new Intent(this, CustomListActivity.class);
+        intent.putExtra(Constants.TYPE, Constants.FAVOURITES);
+        startActivity(intent);
+    }
 }
