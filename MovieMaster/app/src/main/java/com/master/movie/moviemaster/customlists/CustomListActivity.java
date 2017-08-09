@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.master.movie.moviemaster.R;
 import com.master.movie.moviemaster.database.DBHelper;
@@ -33,6 +34,7 @@ import static android.view.View.GONE;
 
 public class CustomListActivity extends Activity {
     private String type;
+
     @Inject
     DBHelper dbHelper;
 
@@ -52,7 +54,6 @@ public class CustomListActivity extends Activity {
         ButterKnife.bind(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         movieList.setLayoutManager(layoutManager);
-
     }
 
     @Override
@@ -67,11 +68,17 @@ public class CustomListActivity extends Activity {
     }
 
     public void showMovies(ArrayList<MovieDetails> movies) {
-        if (adapter == null) {
-            adapter = new CustomListAdapter(movies, this);
-            movieList.setAdapter(adapter);
+        if (movies == null || movies.isEmpty()) {
+            Toast.makeText(this, type.equals(Constants.FAVOURITES) ?
+                            getString(R.string.empty_favourites) : getString(R.string.empty_watchlist),
+                    Toast.LENGTH_SHORT).show();
         } else {
-            adapter.update(movies);
+            if (adapter == null) {
+                adapter = new CustomListAdapter(movies, this);
+                movieList.setAdapter(adapter);
+            } else {
+                adapter.update(movies);
+            }
         }
     }
 
@@ -84,8 +91,11 @@ public class CustomListActivity extends Activity {
     public void removeFromList(int movieId) {
         if (type.equals(Constants.WATCHLIST)) {
             dbHelper.removeFromWatchlist(movieId);
+            adapter.update(dbHelper.getAllMoviesFromWatchlist());
+
         } else {
             dbHelper.removeFromFavourites(movieId);
+            adapter.update(dbHelper.getAllMoviesFromFavourites());
         }
     }
 

@@ -13,4 +13,6 @@
     <string name="movie_deleted_from_watchlist">Film je uklonjen iz liste.</string>
     <string name="remove_from_favourites">Ukloni iz omiljenih</string>
     <string name="remove_from_watchlist">Ukloni iz liste.</string>
+    <string name="empty_watchlist">Nema filmova u listi za gledanje kasnije.</string>
+    <string name="empty_favourites">Nema omiljenih filmova.</string>
 </resources>
