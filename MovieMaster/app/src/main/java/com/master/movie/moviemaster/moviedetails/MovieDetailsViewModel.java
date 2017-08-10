@@ -143,6 +143,22 @@ public class MovieDetailsViewModel extends BaseObservable {
     }
 
     @Bindable
+    public String getCast() {
+        if (movieDetails != null && movieDetails.getCast() != null) {
+            String cast = "";
+            for (int i = 0; i < movieDetails.getCast().size(); i++) {
+                cast += movieDetails.getCast().get(i);
+                if (i != movieDetails.getCast().size() - 1) {
+                    cast += ", ";
+                }
+            }
+            return cast;
+        }
+        return "";
+    }
+
+
+    @Bindable
     public String getRating() {
         if (movieDetails != null) {
             return context.getResources().getString(R.string.rating)
