@@ -6,18 +6,18 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.master.movie.moviemaster.R;
 import com.master.movie.moviemaster.database.DBHelper;
-import com.master.movie.moviemaster.dto.Movie;
 import com.master.movie.moviemaster.dto.MovieDetails;
 import com.master.movie.moviemaster.internal.MovieMaster;
-import com.master.movie.moviemaster.mainmovielist.MainMovieListAdapter;
 import com.master.movie.moviemaster.moviedetails.MovieDetailsActivity;
 import com.master.movie.moviemaster.util.Constants;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -42,6 +42,8 @@ public class CustomListActivity extends Activity {
     RecyclerView movieList;
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
+    @BindView(R.id.header)
+    TextView header;
 
     private CustomListAdapter adapter;
 
@@ -54,6 +56,8 @@ public class CustomListActivity extends Activity {
         ButterKnife.bind(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         movieList.setLayoutManager(layoutManager);
+        header.setText(type.equals(Constants.FAVOURITES) ?
+                getString(R.string.favourites) : getString(R.string.watchlist));
     }
 
     @Override
