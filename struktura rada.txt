@@ -92,36 +92,6 @@ android studio 3.0
  do 15. Dagger i neka prva verzija rada (biblioteke i zakljucak, sadrzaj)
  dalje posle upeglavanje rada i zavrsetak aplikacije
  
- ostalo da se napise dohvatanje slike - done, 
- spinner da se doda - done
- zakacivanje raskacivanje subskripcije - done
- 
- 
- 
- cetvrtak, petak, subota: favoriti i watchlista (prikaz bi mogao na slican fazon kao glavna lista)
- nedelja : upeglavanje
- 
- 
- mozda bi bilo pametno da dodas i stetho sada
- i fabric
- 
- 
- layout - ovde jos uradi promene iz TODO-a
- 
- dodavanje u favorite i watchlistu (baza, header, prikaz)
- razmisli sta ces za ocenjivanje (lokalno cuvaj i prikazuj na zvezdicama)
- 
- search
- 
- 
- 
- 
- u wl i u fav mozes dodati samo iz detalja filma, 
- tamo ces da prikazujes listu gde ce samo da bude fazon razlika u naslovu gore i sta povlaci
- za to ne moras ni da se cimas nesto puno napravis DBHelper koji vraca podatke koji su potrebni,
- adapter maltene isti kao i tamo za onu listu i dva razlicita activity-ja ali oni ce da budu jako slicni
- 
- kada dodas u wl ili favorite samo promenis tekst na dugmetu i prikazes jedan toast
  
  
  

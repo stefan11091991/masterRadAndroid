@@ -22,14 +22,11 @@ public class DBModule {
 
     public DBModule(Application context) {
         this.context = context;
-        Log.d("MyDebug", "DBModule");
-
     }
 
     @Provides
     @Singleton
     DBHelper provideDBHelper() {
-        Log.d("MyDebug", "providing dbhelper");
         return new DBHelper(context);
     }
 }
