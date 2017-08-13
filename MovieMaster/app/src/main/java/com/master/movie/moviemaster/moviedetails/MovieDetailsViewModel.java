@@ -64,7 +64,6 @@ public class MovieDetailsViewModel extends BaseObservable {
                         public void onNext(MovieDetails newMovieDetails) {
                             movieDetails = newMovieDetails;
                             dataLoading.set(false);
-                            Log.d("MyDebug", "called on next");
                             notifyChange();
                         }
                     });
@@ -106,11 +105,6 @@ public class MovieDetailsViewModel extends BaseObservable {
 
     public void rateMovie(View view, float newRating, boolean fromUser) {
         model.rateMovie(movieId, newRating);
-    }
-
-    @Bindable
-    public String getFirstActor() {
-        return movieDetails.getCast().get(0);
     }
 
     @Bindable
@@ -157,7 +151,6 @@ public class MovieDetailsViewModel extends BaseObservable {
         return "";
     }
 
-
     @Bindable
     public String getRating() {
         if (movieDetails != null) {
@@ -175,5 +168,4 @@ public class MovieDetailsViewModel extends BaseObservable {
         }
         return null;
     }
-
 }

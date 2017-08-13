@@ -92,6 +92,9 @@ android studio 3.0
  do 15. Dagger i neka prva verzija rada (biblioteke i zakljucak, sadrzaj)
  dalje posle upeglavanje rada i zavrsetak aplikacije
  
+
+ 
+ o view modelu mozes jos samo o drugom nacinu bindovanja itd, mozda jos neki deo xmla
  
  
  

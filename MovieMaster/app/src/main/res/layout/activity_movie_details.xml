@@ -4,7 +4,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
         <import type="android.view.View" />
 
         <variable
@@ -53,13 +52,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="4dp" />
 
-        <!--<View-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="1dp"-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--android:background="@color/colorPrimary"-->
-            <!--app:layout_constraintTop_toBottomOf="@+id/poster"-->
-            <!--app:layout_constraintRight_toRightOf="parent" />-->
 
         <TextView
             android:id="@+id/storyline"
@@ -80,15 +72,6 @@
             app:layout_constraintTop_toBottomOf="@+id/add_to_watchlist"
             app:layout_constraintVertical_bias="0.0"
             tools:text="Sample storyline" />
-
-        <!--<View-->
-            <!--android:id="@+id/view"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="1dp"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:background="@color/colorPrimary"-->
-            <!--app:layout_constraintTop_toBottomOf="@+id/storyline"-->
-            <!--app:layout_constraintRight_toRightOf="parent" />-->
 
         <RatingBar
             android:id="@+id/ratingBar2"

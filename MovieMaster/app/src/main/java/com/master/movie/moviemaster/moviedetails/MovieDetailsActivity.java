@@ -32,14 +32,11 @@ public class MovieDetailsActivity extends Activity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details);
         binding.setMovieDetailsViewModel(viewModel);
         viewModel.loadMovieDetails();
-
     }
-
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         viewModel.finishSubscriptions();
     }
-
 }

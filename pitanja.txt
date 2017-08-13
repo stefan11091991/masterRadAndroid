@@ -6,3 +6,11 @@ ili da se aplikacija stalno provlaci kroz teoriju?
 
 
 
+posto radim slozenije stvari u Andoidu, da li je potrebno da pisem sta je aktivnost, fragment itd.
+da li je ok sto ce vecina referenci da mi bude sa neta, blogova, dokumentacija za biblioteke i slicno posto
+je ovo sve vise manje novo i nemam nesto preterano referenca iz knjiga, i knjige na koje sam nailazio su uglavnom za pocetnike,
+bez npr rxjave i daggera2 ili se ne pridaje znacaj arhitekturi
+
+
+
+
