@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.master.movie.moviemaster.R;
 import com.master.movie.moviemaster.data.MovieDetailsModel;
 import com.master.movie.moviemaster.dto.MovieDetails;
@@ -58,6 +59,7 @@ public class MovieDetailsViewModel extends BaseObservable {
                         @Override
                         public void onError(Throwable e) {
                             e.printStackTrace();
+                            Crashlytics.logException(e);
                         }
 
                         @Override

@@ -3,6 +3,7 @@ package com.master.movie.moviemaster.internal;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
+import com.crashlytics.android.Crashlytics;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.master.movie.moviemaster.dto.Movie;
 import com.master.movie.moviemaster.dto.MovieDetails;
@@ -78,6 +79,7 @@ public class ApiServiceWrapper {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            Crashlytics.logException(e);
         }
 
         return movie;
@@ -100,6 +102,7 @@ public class ApiServiceWrapper {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            Crashlytics.logException(e);
         }
 
         return movieDetails;

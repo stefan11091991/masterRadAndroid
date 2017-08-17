@@ -2,6 +2,7 @@ package com.master.movie.moviemaster.mainmovielist;
 
 import android.util.Log;
 
+import com.crashlytics.android.Crashlytics;
 import com.master.movie.moviemaster.data.MainMovieListModel;
 import com.master.movie.moviemaster.dto.Movie;
 
@@ -41,6 +42,7 @@ public class MainMovieListPresenter implements MainMovieListContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
+                        Crashlytics.logException(e);
                     }
 
                     @Override

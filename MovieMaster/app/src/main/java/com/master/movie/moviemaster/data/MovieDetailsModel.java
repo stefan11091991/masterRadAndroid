@@ -2,6 +2,8 @@ package com.master.movie.moviemaster.data;
 
 import android.util.Log;
 
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.ContentViewEvent;
 import com.master.movie.moviemaster.database.DBHelper;
 import com.master.movie.moviemaster.dto.MovieDetails;
 import com.master.movie.moviemaster.internal.ApiServiceWrapper;
@@ -28,7 +30,6 @@ public class MovieDetailsModel {
     }
 
     public Observable<MovieDetails> getMovieDetails(int movieId) {
-        Log.d("MyDebug", "getMovieDetails");
         return Observable.create((Observable.OnSubscribe<MovieDetails>) subscriber ->
                 MovieDetailsModel.this.getMovieDetailsSub(subscriber, movieId))
                 .doOnNext(movieDetails -> apiServiceWrapper.getPoster(movieDetails))
@@ -49,10 +50,14 @@ public class MovieDetailsModel {
 
     public void addToFavourites(MovieDetails movieDetails) {
         dbHelper.insertMovieToFavourites(movieDetails);
+        Answers.getInstance().logContentView(new ContentViewEvent()
+                .putCustomAttribute("Added to favourites", movieDetails.getName()));
     }
 
     public void addToWatchlist(MovieDetails movieDetails) {
         dbHelper.insertMovieToWatchlist(movieDetails);
+        Answers.getInstance().logContentView(new ContentViewEvent()
+                .putCustomAttribute("Added to watchlist", movieDetails.getName()));
     }
 
     public void rateMovie(int movieId, float newRating) {
