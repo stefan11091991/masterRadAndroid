@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.stetho.Stetho;
 import com.crashlytics.android.Crashlytics;
+
 import io.fabric.sdk.android.Fabric;
 
 /**
@@ -22,12 +23,10 @@ public class MovieMaster extends Application {
         Stetho.initializeWithDefaults(this);
 
         movieComponent = DaggerMovieComponent.builder()
-                .movieModule(new MovieModule())
                 .build();
 
         movieDetailsComponent = DaggerMovieDetailsComponent.builder()
                 .dBModule(new DBModule(this))
-                .movieDetailsModule(new MovieDetailsModule())
                 .build();
 
         customListComponent = DaggerCustomListComponent.builder()

@@ -16,6 +16,4 @@ import dagger.Component;
 @Component(modules={MovieDetailsModule.class, NetworkModule.class, DBModule.class})
 public interface MovieDetailsComponent {
     void inject(MovieDetailsViewModel viewModel);
-
-    void inject(DBHelper dbHelper);
 }

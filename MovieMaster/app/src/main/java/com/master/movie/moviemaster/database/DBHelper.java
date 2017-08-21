@@ -61,7 +61,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        ((MovieMaster) context.getApplicationContext()).getMovieDetailsComponent().inject(this);
     }
 
     public void insertMovieToFavourites(MovieDetails movie) {
