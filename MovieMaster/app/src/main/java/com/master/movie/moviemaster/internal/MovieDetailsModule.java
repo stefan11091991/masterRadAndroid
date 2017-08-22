@@ -18,5 +18,4 @@ public class MovieDetailsModule {
     MovieDetailsModel provideMovieDetailsModel(ApiServiceWrapper apiServiceWrapper, DBHelper dbHelper) {
         return new MovieDetailsModel(apiServiceWrapper, dbHelper);
     }
-
 }
