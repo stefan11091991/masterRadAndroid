@@ -80,8 +80,8 @@ android studio 3.0
  plan za dalji rad:
   MVVM - 7 strana
  zavrsi deo oko implementacije daggera - 3 strane
- sporedne biblioteke - 3 strane 
  sadrzaj - 1 strana
+ sporedne biblioteke - 3 strane 
  zakljucak - 1 strana
  
  vidi sta ces sa roboguice-om
@@ -97,7 +97,8 @@ android studio 3.0
  o view modelu mozes jos samo o drugom nacinu bindovanja itd, mozda jos neki deo xmla
  
  
- 
+ zakljucak, dosta se napredovalo, dosta je zrelija oblast, standardizovanija, dalje ono sto sledi je Kotlin a ima i struja 
+ da bude sve javascript, react native. Svejedno platforma nije jos dostigla punu zrelost a vreme ce da pokaze kako to ide dalje
  
  
  
