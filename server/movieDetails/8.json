@@ -1,0 +1,9 @@
+  {
+    "id": "8",
+    "name": "The Lord of the Rings: The Return of the King",
+    "year": 2003,
+    "rating": 8.9,
+	"poster":"/posters/8.jpg",
+	"storyLine":"The final confrontation between the forces of good and evil fighting for control of the future of Middle-earth. Hobbits: Frodo and Sam reach Mordor in their quest to destroy the \"one ring\", while Aragorn leads the forces of good against Sauron's evil army at the stone city of Minas Tirith.",
+	"cast":["Elijah Wood", "Viggo Mortensen", "Ian McKellen"]
+  }

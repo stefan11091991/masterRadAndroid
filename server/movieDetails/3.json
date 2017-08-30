@@ -1,0 +1,9 @@
+  {
+    "id": "3",
+    "name": "The Godfather: Part II",
+    "year": 1974,
+    "rating": 9.0,
+	"poster":"/posters/3.jpg",
+	"storyLine":"The continuing saga of the Corleone crime family tells the story of a young Vito Corleone growing up in Sicily and in 1910s New York; and follows Michael Corleone in the 1950s as he attempts to expand the family business into Las Vegas, Hollywood and Cuba.",
+	"cast":["Al Pacino", "Robert De Niro", "Robert Duvall"]
+  }

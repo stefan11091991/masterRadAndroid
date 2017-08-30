@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="android.view.View" />
 
         <variable
@@ -21,20 +22,20 @@
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminate="true"
             android:layout_gravity="center"
-            android:visibility="@{movieDetailsViewModel.dataLoading ? View.VISIBLE : View.GONE}"
-            android:layout_marginStart="149dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-            app:layout_constraintBottom_toBottomOf="@+id/ratingBar2"
             android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="149dp"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="@+id/storyline"
+            android:layout_marginStart="149dp"
+            android:layout_marginTop="8dp"
+            android:indeterminate="true"
+            android:visibility="@{movieDetailsViewModel.dataLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/ratingBar2"
             app:layout_constraintHorizontal_bias="0.089"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/storyline"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
             app:layout_constraintVertical_bias="0.565" />
 
 
@@ -42,54 +43,61 @@
             android:id="@+id/poster"
             android:layout_width="157dp"
             android:layout_height="205dp"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
             android:src="@{movieDetailsViewModel.drawable}"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="4dp" />
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
-
-        <TextView
+        <ScrollView
             android:id="@+id/storyline"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="64dp"
-            android:text="@{movieDetailsViewModel.storyLine}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintBottom_toTopOf="@+id/cast"
+            app:layout_constraintHorizontal_bias="0.514"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_to_watchlist"
-            app:layout_constraintVertical_bias="0.0"
-            tools:text="Sample storyline" />
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@{movieDetailsViewModel.storyLine}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="Sample storyline" />
+
+        </ScrollView>
+
 
         <RatingBar
             android:id="@+id/ratingBar2"
             android:layout_width="wrap_content"
             android:layout_height="57dp"
             android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
             android:foregroundGravity="center_horizontal"
-            android:rating="@{movieDetailsViewModel.myRating}"
-            android:onRatingChanged="@{(v, rating, fromUser) -> movieDetailsViewModel.rateMovie(v, rating, fromUser)}"
             android:numStars="5"
+            android:onRatingChanged="@{(v, rating, fromUser) -> movieDetailsViewModel.rateMovie(v, rating, fromUser)}"
+            android:rating="@{movieDetailsViewModel.myRating}"
             android:stepSize="0.5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <Button
             android:id="@+id/add_to_favourites"
@@ -133,6 +141,7 @@
             android:id="@+id/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
@@ -143,56 +152,59 @@
             app:layout_constraintLeft_toRightOf="@+id/poster"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-            tools:text="Ocena: 8.2/10"
-            android:layout_marginEnd="8dp" />
+            tools:text="Ocena: 8.2/10" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:layout_marginEnd="79dp"
             android:layout_marginRight="79dp"
             android:text="@string/my_rating"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/ratingBar2"
             app:layout_constraintRight_toRightOf="@+id/ratingBar2"
-            tools:text="Moja ocena"
-            android:layout_marginEnd="79dp" />
+            tools:text="Moja ocena" />
 
         <FrameLayout
+            android:id="@+id/frameLayout"
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:background="@color/colorPrimary"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/frameLayout"
-            app:layout_constraintHorizontal_bias="0.0">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/header"
-                tools:text="Shawshank Redemption (1994)"
-                android:text="@{movieDetailsViewModel.name + ` (` + movieDetailsViewModel.year + ')'}"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textSize="21sp"/>
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@{movieDetailsViewModel.name + ` (` + movieDetailsViewModel.year + ')'}"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="21sp"
+                tools:text="Shawshank Redemption (1994)" />
 
         </FrameLayout>
 
         <TextView
             android:id="@+id/cast"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:text="@{`Uloge: ` + movieDetailsViewModel.cast}"
             android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView5"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView5" />
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="Uloge: Glumac Glumac, Glumac Glumac, Glumac Glumac" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>
