@@ -8,7 +8,7 @@ public class Constants {
     //hotspot
 //    public static final String rootUrl = "http://192.168.43.220:8081";
 //    home
-    public static final String rootUrl = "http://192.168.0.12:8081";
+    public static final String rootUrl = "http://192.168.0.13:8081";
     public static final String MOVIE_ID = "MOVIE_ID";
     public static final String TYPE = "TYPE";
     public static final String FAVOURITES = "FAVOURITES";
